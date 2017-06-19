@@ -22,7 +22,6 @@ public class SendMsgActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new MessageEvent("Hello everyone!"));
-                finish();
             }
         });
 
