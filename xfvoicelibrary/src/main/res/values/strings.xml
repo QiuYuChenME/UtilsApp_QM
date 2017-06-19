@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">XFVoiceLibrary</string>
+    <string name="voice">开始</string>
+    <string name="read">语音合成</string>
+</resources>

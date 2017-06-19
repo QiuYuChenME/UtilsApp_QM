@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MLibrary</string>
+    <string name="btn_one">按钮一（EventBus）</string>
+    <string name="libmaintitle">（隐藏标题，actionbar，状态栏）</string>
+    <string name="btnutils">butterknife（黄油刀）</string>
+    <string name="btneventbus">EVENTBUS</string>
+    <string name="btn_other">其他（未实现）</string>
+    <string name="btn_sendmsg">发送消息</string>
+    <string name="nothing">无</string>
+    <string name="btn_greendao">按钮二（GreenDao）</string>
+    <string name="btn_retrofit">按钮三（Retrofit）</string>
+</resources>
