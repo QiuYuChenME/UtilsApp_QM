@@ -41,4 +41,5 @@ dependencies {
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile project(':xfvoicelibrary')
     compile project(':sanforvpnconnlib')
+    compile project(':ndklib')
 }

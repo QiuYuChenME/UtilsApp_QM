@@ -24,6 +24,7 @@ import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
 import com.hanling.utilsapp.bean.TestBean;
 import com.hanling.utilsapp.utils.Constant;
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
+import com.qm.ndklib.NDKActivity;
 import com.qm.sanforvpnconnlib.SanforConnActivity;
 import com.sangfor.ssl.IVpnDelegate;
 import com.sangfor.ssl.SangforAuth;
@@ -133,7 +134,8 @@ public class UtilsActivity extends AppCompatActivity
                 }
 
         } else if (id == R.id.nav_share) {
-
+            Intent i = new Intent(this, NDKActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_send) {
 
         }

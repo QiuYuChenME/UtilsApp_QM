@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/UtilsApp_QM.iml" filepath="$PROJECT_DIR$/UtilsApp_QM.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/mlibrary/mlibrary.iml" filepath="$PROJECT_DIR$/mlibrary/mlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ndklib/ndklib.iml" filepath="$PROJECT_DIR$/ndklib/ndklib.iml" />
       <module fileurl="file://$PROJECT_DIR$/sanforvpnconnlib/sanforvpnconnlib.iml" filepath="$PROJECT_DIR$/sanforvpnconnlib/sanforvpnconnlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/xfvoicelibrary/xfvoicelibrary.iml" filepath="$PROJECT_DIR$/xfvoicelibrary/xfvoicelibrary.iml" />
     </modules>
