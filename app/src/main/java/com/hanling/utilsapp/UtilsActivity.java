@@ -24,6 +24,7 @@ import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
 import com.hanling.utilsapp.bean.TestBean;
 import com.hanling.utilsapp.utils.Constant;
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
+import com.qm.customview_qmlibrary.CustomviewActivity;
 import com.qm.ndklib.NDKActivity;
 import com.qm.sanforvpnconnlib.SanforConnActivity;
 import com.sangfor.ssl.IVpnDelegate;
@@ -137,7 +138,8 @@ public class UtilsActivity extends AppCompatActivity
             Intent i = new Intent(this, NDKActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_send) {
-
+            Intent i = new Intent(this, CustomviewActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

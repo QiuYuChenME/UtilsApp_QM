@@ -42,4 +42,5 @@ dependencies {
     compile project(':xfvoicelibrary')
     compile project(':sanforvpnconnlib')
     compile project(':ndklib')
+    compile project(':customview_qmlibrary')
 }

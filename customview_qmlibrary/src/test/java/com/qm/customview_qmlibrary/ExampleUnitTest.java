@@ -1,4 +1,4 @@
-package com.qm.dialognormallib;
+package com.qm.customview_qmlibrary;
 
 import org.junit.Test;
 

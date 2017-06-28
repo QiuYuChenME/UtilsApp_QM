@@ -12,5 +12,7 @@ public class NDKActivity extends AppCompatActivity {
         setContentView(R.layout.activity_ndk);
         tv_ndk = (TextView) findViewById(R.id.tv_ndk);
         tv_ndk.setText(JniTest.getPackname(new Object()));
+
+
     }
 }

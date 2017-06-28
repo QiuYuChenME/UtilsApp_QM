@@ -1,4 +1,4 @@
-package com.qm.dialognormallib;
+package com.qm.customview_qmlibrary;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.qm.dialognormallib.test", appContext.getPackageName());
+        assertEquals("com.qm.customview_qmlibrary.test", appContext.getPackageName());
     }
 }
