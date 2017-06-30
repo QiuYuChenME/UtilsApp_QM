@@ -6,7 +6,6 @@ import android.os.Bundle;
 import com.hanling.mlibrary.R;
 import com.orhanobut.logger.Logger;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

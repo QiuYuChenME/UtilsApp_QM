@@ -53,19 +53,27 @@ public class TopBar extends RelativeLayout {
         title_tv.setBackgroundColor(titleTextColor);
         title_tv.setText(title);
         title_tv.setGravity(Gravity.CENTER);
-
+        /**
+         * 左侧布局
+         */
         leftParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         leftParams.addRule(RelativeLayout.ALIGN_PARENT_LEFT,TRUE);
         addView(left_btn,leftParams);
-
+        /**
+         * 右侧布局
+         */
         rightParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         rightParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,TRUE);
         addView(right_btn,rightParams);
-        setBackgroundColor(0XFFF59563);
 
+        /**
+         * 中间布局
+         */
         centerParams = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
         centerParams.addRule(RelativeLayout.CENTER_IN_PARENT,TRUE);
         addView(title_tv,centerParams);
+
+        setBackgroundColor(0XFFF59563);
     }
 
 }

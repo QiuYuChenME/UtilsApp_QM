@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -22,7 +23,6 @@ import com.google.gson.Gson;
 import com.hanling.mlibrary.LibMainActivity;
 import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
 import com.hanling.utilsapp.bean.TestBean;
-import com.hanling.utilsapp.utils.Constant;
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
 import com.qm.customview_qmlibrary.CustomviewActivity;
 import com.qm.ndklib.NDKActivity;
@@ -31,12 +31,15 @@ import com.sangfor.ssl.IVpnDelegate;
 import com.sangfor.ssl.SangforAuth;
 
 
+import java.io.IOException;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class UtilsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    private static final String TAG ="UtilsActivity" ;
     @BindView(R.id.btn_utils)
     Button btn_utils;
 
@@ -77,6 +80,17 @@ public class UtilsActivity extends AppCompatActivity
         Gson gson  = new Gson();
         String s = gson.toJson(testBean).toString();
 //        Logger.t("mytag").json(Constant.JsonStringTest);
+
+
+        //线程中ping 网址 测试网络是否正常
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final boolean b = pingIpAddress("10.14.10.24");
+//                final boolean b = pingIpAddress("www.baidu.com");
+                Log.e(TAG, "run: "+b );
+            }
+        }).start();
 
     }
 
@@ -156,5 +170,20 @@ public class UtilsActivity extends AppCompatActivity
         Toast.makeText(this, "被点击了"+button.getText(), Toast.LENGTH_SHORT).show();
 
     }
-
+    private boolean pingIpAddress(String ipAddress) {
+        try {
+            Process process = Runtime.getRuntime().exec("/system/bin/ping -c 1 -w 5 " + ipAddress);
+            int status = process.waitFor();
+            if (status == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

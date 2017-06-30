@@ -42,6 +42,7 @@ public class LibMainActivity extends AppCompatActivity {
         // bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         // bluetoothAdapter.enable();
         initView();
+
     }
 
     private void initView() {
