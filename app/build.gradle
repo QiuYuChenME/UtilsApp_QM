@@ -43,4 +43,5 @@ dependencies {
     compile project(':sanforvpnconnlib')
     compile project(':ndklib')
     compile project(':customview_qmlibrary')
+    compile project(path: ':maplib')
 }

@@ -1,6 +1,8 @@
 package com.hanling.utilsapp;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -25,6 +27,7 @@ import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
 import com.hanling.utilsapp.bean.TestBean;
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
 import com.qm.customview_qmlibrary.CustomviewActivity;
+import com.qm.maplib.MapActivity;
 import com.qm.ndklib.NDKActivity;
 import com.qm.sanforvpnconnlib.SanforConnActivity;
 import com.sangfor.ssl.IVpnDelegate;
@@ -81,7 +84,9 @@ public class UtilsActivity extends AppCompatActivity
         String s = gson.toJson(testBean).toString();
 //        Logger.t("mytag").json(Constant.JsonStringTest);
 
-
+        ProgressDialog progressDialog =  new ProgressDialog(this);
+        progressDialog.setMessage("测试系统loading框");
+        progressDialog.show();
         //线程中ping 网址 测试网络是否正常
         new Thread(new Runnable() {
             @Override
@@ -154,6 +159,9 @@ public class UtilsActivity extends AppCompatActivity
         } else if (id == R.id.nav_send) {
             Intent i = new Intent(this, CustomviewActivity.class);
             startActivity(i);
+        }else  if (id ==R.id.nav_map){
+            Intent i = new Intent(this, MapActivity.class);
+            startActivity(i);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -170,6 +178,11 @@ public class UtilsActivity extends AppCompatActivity
         Toast.makeText(this, "被点击了"+button.getText(), Toast.LENGTH_SHORT).show();
 
     }
+
+
+    /**
+     * ping 网络命令
+     */
     private boolean pingIpAddress(String ipAddress) {
         try {
             Process process = Runtime.getRuntime().exec("/system/bin/ping -c 1 -w 5 " + ipAddress);
