@@ -31,4 +31,5 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile files('libs/SangforSDK.jar')
     compile files('libs/BugReportUtils.jar')
+    compile project(':pickerview')
 }

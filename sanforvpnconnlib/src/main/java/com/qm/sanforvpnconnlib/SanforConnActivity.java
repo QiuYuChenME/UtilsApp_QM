@@ -1,14 +1,26 @@
 package com.qm.sanforvpnconnlib;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.sangfor.ssl.IVpnDelegate;
 import com.sangfor.ssl.SFException;
@@ -17,13 +29,13 @@ import com.sangfor.ssl.common.VpnCommon;
 import com.sangfor.ssl.service.setting.SystemConfiguration;
 
 import java.net.InetAddress;
+import java.util.ArrayList;
+import java.util.List;
 
-/**
- * 页面为透明页 设备级vpn登录回调成功后自动finish（）
- */
+
 public class SanforConnActivity extends Activity implements IVpnDelegate {
-    private static final String TAG ="SanforConnLoginActivity" ;
-
+    private static final String TAG = "SanforConnLoginActivity";
+    private ArrayList<TypeBean> mList = new ArrayList<TypeBean>();
     // 认证所需信息
     private static String VPN_IP = "202.97.140.66"; // VPN设备地址　（也可以使用域名访问）
     private static int VPN_PORT = 443; // vpn设备端口号，一般为443
@@ -38,23 +50,190 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
 
     private static String SMS_CODE = "";
     private static String RADIUS_CODE = "";//radius认证的
-
+    private int nowpositon = -1;
     private final int TEST_URL_TIMEOUT_MILLIS = 8 * 1000;// 测试vpn资源的超时时间
-    private int AUTH_MODULE = SangforAuth.AUTH_MODULE_EASYAPP;
+    private int AUTH_MODULE = SangforAuth.AUTH_MODULE_L3VPN;
+    private TextView tv_mode_sanforlib, tv_quickset_sanforlib;
+    private ImageButton cancel;
+    private Button btn_loginvpn_sanforlib, btn_save_sanforlib;
+    private Context mContext;
+    private EditText et_vpnip_sanforlib, et_port_sanforlib, et_user_sanforlib, et_pwd_sanforlib;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+
+    private SanforinfoDAO sanforinfoDAO;
+    private ArrayList<SanforInfoBean> sanforlist;
+    private ProgressDialog progressDialog;
+    private Button btn_delete;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-//取消状态栏
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sanfor_conn);
-        initVpnModule();
+        mContext = this;
+        /**
+         * 组件初始化
+         */
+        tv_mode_sanforlib = (TextView) findViewById(R.id.tv_mode_sanforlib);
+        cancel = (ImageButton) findViewById(R.id.cancel);
+        et_vpnip_sanforlib = (EditText) findViewById(R.id.et_vpnip_sanforlib);
+        et_port_sanforlib = (EditText) findViewById(R.id.et_port_sanforlib);
+        et_user_sanforlib = (EditText) findViewById(R.id.et_user_sanforlib);
+        et_pwd_sanforlib = (EditText) findViewById(R.id.et_pwd_sanforlib);
+        btn_save_sanforlib = (Button) findViewById(R.id.btn_save_sanforlib);
+        btn_loginvpn_sanforlib = (Button) findViewById(R.id.btn_loginvpn_sanforlib);
+        tv_quickset_sanforlib = (TextView) findViewById(R.id.tv_quickset_sanforlib);
+        btn_delete = (Button) findViewById(R.id.btn_delete_sanfor);
+        btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (nowpositon != -1) {
+                    int deletedata = sanforinfoDAO.deletedata(sanforlist.get(nowpositon).getName());
 
-        if (SangforAuth.getInstance().vpnQueryStatus() != IVpnDelegate.VPN_STATUS_AUTH_OK) {
-            initSslVpn();
-        } else {
-            Toast.makeText(this, "VPN正常运行中,注销后才能重新登录", Toast.LENGTH_SHORT).show();
-        }
+                    if (deletedata==1){
+                        tv_quickset_sanforlib.setText("请选择");
+                        tv_mode_sanforlib.setText("请选择VPN模式");
+                        et_vpnip_sanforlib.setText("");
+                        et_port_sanforlib.setText("");
+                        et_user_sanforlib.setText("");
+                        et_pwd_sanforlib.setText("");
+                    }
+                }
+            }
+        });
+        tv_quickset_sanforlib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sanforlist = (ArrayList<SanforInfoBean>) sanforinfoDAO.loadData();
+
+                Util.alertBottomWheelOption(SanforConnActivity.this, sanforlist, new Util.OnWheelViewClick() {
+                    @Override
+                    public void onClick(View view, int i) {
+                        nowpositon = i;
+                        tv_quickset_sanforlib.setText(sanforlist.get(i).getName());
+                        SanforInfoBean sanforInfoBean = sanforlist.get(i);
+                        tv_mode_sanforlib.setText(sanforInfoBean.getMode());
+                        et_vpnip_sanforlib.setText(sanforInfoBean.getIP());
+                        et_port_sanforlib.setText(sanforInfoBean.getPort());
+                        et_user_sanforlib.setText(sanforInfoBean.getUser());
+                        et_pwd_sanforlib.setText(sanforInfoBean.getPwd());
+                        tv_quickset_sanforlib.setText(sanforInfoBean.getName());
+                    }
+                });
+            }
+        });
+
+        sanforinfoDAO = new SanforinfoDAO(this);
+
+
+        /**
+         * 将保存的信息显示
+         */
+        loadData(getApplicationContext());
+        /**
+         * 保存按钮逻辑
+         */
+        btn_save_sanforlib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final EditText et = new EditText(SanforConnActivity.this);
+                new AlertDialog.Builder(SanforConnActivity.this)
+                        .setTitle("保存名称")
+                        .setIcon(android.R.drawable.ic_dialog_info)
+                        .setView(et)
+                        .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String etname = et.getText().toString().trim();
+
+                                if (et.getText().toString().trim().equals("")) {
+                                    Toast.makeText(SanforConnActivity.this, "请输入名称", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    String mode = tv_mode_sanforlib.getText().toString().trim();
+                                    String ip = et_vpnip_sanforlib.getText().toString().trim();
+                                    String port = et_port_sanforlib.getText().toString().trim();
+                                    String user = et_user_sanforlib.getText().toString().trim();
+                                    String pwd = et_pwd_sanforlib.getText().toString().trim();
+                                    long test1 = sanforinfoDAO.addDate(etname, mode, ip, port, user, pwd);
+
+                                }
+
+                            }
+                        })
+                        .setNegativeButton("取消", null)
+                        .show();
+
+
+            }
+        });
+        /**
+         * 返回按钮
+         */
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        /**
+         * vpn登录按钮
+         */
+        btn_loginvpn_sanforlib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                progressDialog = new ProgressDialog(mContext);
+                progressDialog.setMessage("登录中。。。");
+                progressDialog.show();
+                initVpnModule();
+                String ip = et_vpnip_sanforlib.getText().toString().trim();
+                String port = et_port_sanforlib.getText().toString().trim();
+                String user = et_user_sanforlib.getText().toString().trim();
+                String pwd = et_pwd_sanforlib.getText().toString().trim();
+                VPN_IP = !ip.equals("") ? ip : "202.97.140.66";
+                try {
+                    VPN_PORT = port.equals("") ? 443 : Integer.parseInt(port);
+                } catch (Exception e) {
+                    VPN_PORT = 443;
+                }
+
+                USER_NAME = user.equals("") ? "shwb" : user;
+                USER_PASSWD = pwd.equals("") ? "q1w2e3r4.0317" : pwd;
+
+                if (SangforAuth.getInstance().vpnQueryStatus() != IVpnDelegate.VPN_STATUS_AUTH_OK) {
+                    initSslVpn();
+                } else {
+                    Toast.makeText(SanforConnActivity.this, "VPN正常运行中,注销后才能重新登录", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        tv_mode_sanforlib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Util.alertBottomWheelOption(SanforConnActivity.this, mList, new Util.OnWheelViewClick() {
+                    @Override
+                    public void onClick(View view, int postion) {
+                        if (postion == 0) {
+                            tv_mode_sanforlib.setText("L3VPN模式");
+                            AUTH_MODULE = SangforAuth.AUTH_MODULE_L3VPN;
+                        } else {
+                            tv_mode_sanforlib.setText("EASYAPP模式");
+                            AUTH_MODULE = SangforAuth.AUTH_MODULE_EASYAPP;
+                        }
+                    }
+                });
+            }
+        });
+        // 单项选择
+
+        mList.add(new TypeBean(0, "L3VPN模式(针对整个手机)"));
+        mList.add(new TypeBean(1, "EASYAPP模式(只针对集成SDK的apk)"));
+
     }
 
 
@@ -64,13 +243,13 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
             // SDK模式初始化，easyapp模式或者是l3vpn模式，两种模式区别请参考文档
 //            Intent intent = getIntent();
 //            AUTH_MODULE = intent.getIntExtra("vpn_mode", SangforAuth.AUTH_MODULE_EASYAPP);
-
-            sfAuth.init(getApplication(), this, this, SangforAuth.AUTH_MODULE_L3VPN);//SangforAuth.AUTH_MODULE_L3VPN、SangforAuth.AUTH_MODULE_EASYAPP
+            sfAuth.init(getApplication(), this, this, AUTH_MODULE);//SangforAuth.AUTH_MODULE_L3VPN、SangforAuth.AUTH_MODULE_EASYAPP
             sfAuth.setLoginParam(AUTH_CONNECT_TIME_OUT, String.valueOf(8));
         } catch (SFException e) {
             e.printStackTrace();
         }
     }
+
     /**
      * 开始初始化VPN，该初始化为异步接口，后续动作通过回调函数vpncallback通知结果
      *
@@ -81,6 +260,10 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
         initSslVpnTask.execute();
         return true;
     }
+
+
+
+
     class InitSslVpnTask extends AsyncTask<Void, Void, Boolean> {
         InetAddress m_iAddr = null;
 
@@ -101,9 +284,9 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
             String strHost = "";
             if (m_iAddr != null) {
                 strHost = m_iAddr.getHostAddress();
-                Toast.makeText(getApplicationContext(), strHost, Toast.LENGTH_LONG).show();
-            }else {
-                Toast.makeText(getApplicationContext(), strHost, Toast.LENGTH_LONG).show();
+//                Toast.makeText(getApplicationContext(), strHost, Toast.LENGTH_LONG).show();
+            } else {
+//                Toast.makeText(getApplicationContext(), strHost, Toast.LENGTH_LONG).show();
 
             }
             if (TextUtils.isEmpty(strHost)) {
@@ -120,11 +303,6 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
         }
     }
 
-    /**
-     * vpn回调
-     * @param vpnResult
-     * @param authType
-     */
     @Override
     public void vpnCallback(int vpnResult, int authType) {
         SangforAuth sfAuth = SangforAuth.getInstance();
@@ -136,6 +314,7 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
                  */
                 Log.i(TAG, "RESULT_VPN_INIT_FAIL, error is " + sfAuth.vpnGeterr());
                 displayToast("RESULT_VPN_INIT_FAIL, error is " + sfAuth.vpnGeterr());
+                progressDialog.dismiss();
                 break;
 
             case IVpnDelegate.RESULT_VPN_INIT_SUCCESS:
@@ -164,7 +343,7 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
                     String pwdMsg = sfAuth.getPasswordSafePolicyPrompt(errString);
                     displayToast("RESULT_VPN_AUTH_FAIL, error is " + pwdMsg);
                 }
-
+                progressDialog.dismiss();
                 break;
 
             case IVpnDelegate.RESULT_VPN_AUTH_SUCCESS:
@@ -176,7 +355,7 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
                 if (authType == IVpnDelegate.AUTH_TYPE_NONE) {
 
 				/*
-				 * // session共享登陆--主APP保存：认证成功 保存TWFID（SessionId），供子APP使用 String twfid = sfAuth.getTwfid(); Log.i(TAG, "twfid = "+twfid);
+                 * // session共享登陆--主APP保存：认证成功 保存TWFID（SessionId），供子APP使用 String twfid = sfAuth.getTwfid(); Log.i(TAG, "twfid = "+twfid);
 				 */
                     Log.i(TAG, "welcome to sangfor sslvpn!");
                     displayToast("welcome to sangfor sslvpn!");
@@ -185,13 +364,26 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
                     if (SangforAuth.getInstance().getModuleUsed() == SangforAuth.AUTH_MODULE_EASYAPP) {
                         // EasyApp流程，认证流程结束，可访问资源。
                         displayToast("welcome to sangfor AUTH_MODULE_EASYAPP!");
-
+                        Toast.makeText(this, "welcome to sangfor AUTH_MODULE_EASYAPP!", Toast.LENGTH_SHORT).show();
+                        finish();
                         doResourceRequest();
+                        progressDialog.dismiss();
                     }
                 } else if (authType == IVpnDelegate.VPN_TUNNEL_OK) {
                     // l3vpn流程，l3vpn服务通道建立成功，可访问资源
+                    String mode = "";
+                    if (AUTH_MODULE == 2) {
+                        //lv
+                        mode = "L3VPN模式";
+                    } else if (AUTH_MODULE == 1) {
+                        mode = "EASYAPP模式";
+                    }
+                    saveData(getApplicationContext(), VPN_IP, String.valueOf(VPN_PORT), USER_NAME, USER_PASSWD, mode);
+
+
                     Log.i(TAG, "L3VPN tunnel OK!");
-                    displayToast("L3VPN tunnel OK!");
+                    Toast.makeText(this, "L3VPN tunnel OK!", Toast.LENGTH_SHORT).show();
+//                    displayToast("L3VPN tunnel OK!");
                     doResourceRequest();
                     finish();
                 } else {
@@ -268,9 +460,10 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
     public void vpnRndCodeCallback(byte[] bytes) {
 
     }
+
     @Override
-	/*
-	 * l3vpn模式（SangforAuth.AUTH_MODULE_L3VPN）必须重写这个函数： 注意：当前Activity的launchMode不能设置为 singleInstance，否则L3VPN服务启动会失败。 原因：
+    /*
+     * l3vpn模式（SangforAuth.AUTH_MODULE_L3VPN）必须重写这个函数： 注意：当前Activity的launchMode不能设置为 singleInstance，否则L3VPN服务启动会失败。 原因：
 	 * L3VPN模式需要通过startActivityForResult向系统申请使用L3VPN权限，{@link VpnService#prepare} 但startActivityForResult有限制： You cannot use startActivityForResult()
 	 * if the activity being started is not running in the same task as the activity that starts it. This means that neither of the activities can
 	 * have launchMode="singleInstance" 也就是说当前Activity的launchMode不能设置为 singleInstance
@@ -283,27 +476,27 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
     }
 
     private void displayToast(String str) {
-        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
+
     private void doResourceRequest() {
         // 认证结束，可访问资源。
     }
 
     /**
      * 处理认证，通过传入认证类型（需要的话可以改变该接口传入一个hashmap的参数用户传入认证参数）.
-     *
+     * <p>
      * 也可以一次性把认证参数设入，这样就如果认证参数全满足的话就可以一次性认证通过，可见下面屏蔽代码
      *
-     * @param authType
-     *            认证类型
+     * @param authType 认证类型
      * @throws SFException
      */
     private void doVpnLogin(int authType) {
         Log.d(TAG, "doVpnLogin authType " + authType);
         boolean ret = false;
         SangforAuth sfAuth = SangforAuth.getInstance();
-		/*
-		 * // session共享登陆：主APP封装时走原认证流程，子APP认证时使用TWFID（SessionId）认证方式 boolean isMainApp = true; //子APP,isMainApp = false; if(!isMainApp){ authType =
+        /*
+         * // session共享登陆：主APP封装时走原认证流程，子APP认证时使用TWFID（SessionId）认证方式 boolean isMainApp = true; //子APP,isMainApp = false; if(!isMainApp){ authType =
 		 * IVpnDelegate.AUTH_TYPE_TWFID; }
 		 */
         switch (authType) {
@@ -388,5 +581,59 @@ public class SanforConnActivity extends Activity implements IVpnDelegate {
 
     }
 
+    /**
+     * 保存VPN配置信息
+     *
+     * @param context
+     * @param ip
+     * @param port
+     * @param user
+     * @param pwd
+     * @param mode
+     */
+    private void saveData(Context context, String ip, String port, String user, String pwd, String mode) {
+        SharedPreferences sp = context.getSharedPreferences("sanforlib", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("sanformode", mode);
+        editor.putString("sanforip", ip);
+        editor.putString("sanforport", port);
+        editor.putString("sanforuser", user);
+        editor.putString("sanforpwd", pwd);
+        editor.commit();
+    }
+
+    /**
+     * 加载保存的配置信息
+     *
+     * @param context
+     */
+    private void loadData(Context context) {
+        SharedPreferences sp = context.getSharedPreferences("sanforlib", MODE_PRIVATE);
+        String sanformode = sp.getString("sanformode", "");
+        String sanforip = sp.getString("sanforip", "");
+        String sanforport = sp.getString("sanforport", "");
+        String sanforuser = sp.getString("sanforuser", "");
+        String sanforpwd = sp.getString("sanforpwd", "");
+        if (sanformode.equals("")) {
+        } else {
+            tv_mode_sanforlib.setText(sanformode);
+        }
+        if (sanforip.equals("")) {
+        } else {
+            et_vpnip_sanforlib.setText(sanforip);
+        }
+        if (sanforport.equals("")) {
+        } else {
+            et_port_sanforlib.setText(sanforport);
+        }
+        if (sanforuser.equals("")) {
+        } else {
+            et_user_sanforlib.setText(sanforuser);
+        }
+        if (sanforpwd.equals("")) {
+        } else {
+            et_pwd_sanforlib.setText(sanforpwd);
+        }
+    }
 }
 

@@ -86,7 +86,7 @@ public class UtilsActivity extends AppCompatActivity
 
         ProgressDialog progressDialog =  new ProgressDialog(this);
         progressDialog.setMessage("测试系统loading框");
-        progressDialog.show();
+//        progressDialog.show();
         //线程中ping 网址 测试网络是否正常
         new Thread(new Runnable() {
             @Override
@@ -96,7 +96,6 @@ public class UtilsActivity extends AppCompatActivity
                 Log.e(TAG, "run: "+b );
             }
         }).start();
-
     }
 
     @Override

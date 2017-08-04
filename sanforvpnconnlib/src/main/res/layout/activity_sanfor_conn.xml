@@ -1,9 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sanfor_conn"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#ddd"
+    android:orientation="vertical"
+    android:weightSum="1"
     tools:context="com.qm.sanforvpnconnlib.SanforConnActivity">
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:background="#00a0e9"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/cancel"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:background="#00a0e9"
+            android:src="@drawable/ic_back_sanforlib" />
+
+        <TextView
+            android:id="@+id/tv_friend_title"
+            android:layout_width="wrap_content"
+            android:layout_height="50dip"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="vpn配置"
+            android:textColor="#ffffff"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btn_save_sanforlib"
+            style="@null"
+            android:layout_width="60dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:background="#00a0e9"
+            android:text="保存"
+            android:textColor="#ffffff"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_sanforlib"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:text="快速配置" />
+
+            <TextView
+                android:id="@+id/tv_quickset_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:text="请选择" />
+
+            <Button
+                android:id="@+id/btn_delete_sanfor"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_delete_sanforlib" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/shape_edit_sanforlib"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:text="登录模式" />
+
+            <TextView
+                android:id="@+id/tv_mode_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center_vertical"
+                android:text="请选择VPN模式" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:text="服务器IP" />
+
+            <EditText
+                android:id="@+id/et_vpnip_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="端口号" />
+
+            <EditText
+                android:id="@+id/et_port_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/shape_edit_sanforlib"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+
+                android:text="用户名" />
+
+            <EditText
+                android:id="@+id/et_user_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="密码" />
+
+            <EditText
+                android:id="@+id/et_pwd_sanforlib"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:inputType="textPassword" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/btn_loginvpn_sanforlib"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_btn_sanforlib"
+            android:text="VPN登录"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</LinearLayout>

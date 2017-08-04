@@ -40,8 +40,8 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile project(':xfvoicelibrary')
-    compile project(':sanforvpnconnlib')
     compile project(':ndklib')
     compile project(':customview_qmlibrary')
     compile project(path: ':maplib')
+    compile project(':sanforvpnconnlib')
 }
