@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/Pushlib/Pushlib.iml" filepath="$PROJECT_DIR$/Pushlib/Pushlib.iml" />
       <module fileurl="file://$PROJECT_DIR$/UtilsApp_QM.iml" filepath="$PROJECT_DIR$/UtilsApp_QM.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bluetoothlibrary/bluetoothlibrary.iml" filepath="$PROJECT_DIR$/bluetoothlibrary/bluetoothlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/customview_qmlibrary/customview_qmlibrary.iml" filepath="$PROJECT_DIR$/customview_qmlibrary/customview_qmlibrary.iml" />
       <module fileurl="file://$PROJECT_DIR$/maplib/maplib.iml" filepath="$PROJECT_DIR$/maplib/maplib.iml" />
       <module fileurl="file://$PROJECT_DIR$/mlibrary/mlibrary.iml" filepath="$PROJECT_DIR$/mlibrary/mlibrary.iml" />

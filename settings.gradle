@@ -1,1 +1,1 @@
-include ':app', ':mlibrary', ':xfvoicelibrary', ':sanforvpnconnlib', ':ndklib', ':customview_qmlibrary', ':maplib', ':pickerview', ':rxjavalib', ':Pushlib'
+include ':app', ':mlibrary', ':xfvoicelibrary', ':sanforvpnconnlib', ':ndklib', ':customview_qmlibrary', ':maplib', ':pickerview', ':rxjavalib', ':Pushlib', ':bluetoothlibrary'
