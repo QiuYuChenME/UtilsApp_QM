@@ -1,22 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_customview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@drawable/bg"
     tools:context="com.qm.customview_qmlibrary.CustomviewActivity">
-<com.qm.customview_qmlibrary.TopBar
-    android:layout_width="match_parent"
-    android:layout_height="50dp"
-    app:leftText="qqqq"
-    app:title="1111"
-    app:rightText="22222"
-    />
-   <AutoCompleteTextView
-       android:id="@+id/autotv_customlib"
-       android:layout_width="match_parent"
-       android:completionThreshold="1"
-       android:layout_height="wrap_content" />
-</LinearLayout>
+
+    <com.qm.customview_qmlibrary.DoubleWaveView
+        android:id="@+id/doublewave"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_dials"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="刻度盘" />
+
+        <Button
+            android:id="@+id/btn_wave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="波浪" />
+
+        <Button
+            android:id="@+id/btn_topbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="topbar" />
+
+        <Button
+            android:id="@+id/btn_bob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BoB" />
+
+        <com.qm.customview_qmlibrary.TopBar
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:visibility="gone"
+            app:leftText="qqqq"
+            app:rightText="22222"
+            app:title="1111" />
+
+        <FrameLayout
+            android:id="@+id/rootView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+    </LinearLayout>
+</RelativeLayout>

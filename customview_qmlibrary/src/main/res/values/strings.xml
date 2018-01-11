@@ -1,3 +1,992 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">CustomView_QMLibrary</string>
+    <string name="action_settings">Settings</string>
+    <string name="desc_image">Image</string>
+
+    <!-- Dialog -->
+    <string name="dialog_title">提示</string>
+    <string name="dialog_cancel">取消</string>
+    <string name="dialog_confirm">确定</string>
+    <string name="dialog_yes">是</string>
+    <string name="dialog_no">否</string>
+    <string name="dialog_no_remind">不再提示</string>
+    <string name="dialog_know">我知道了</string>
+    <string name="dialog_to_buy">立即购买</string>
+    <string name="dialog_loading_text">正在加载</string>
+    <string name="dialog_update_download_title">软件版本更新</string>
+    <string name="dialog_update_confirm">立即更新</string>
+    <string name="dialog_update_cancel">以后再说</string>
+
+    <!-- 消息提醒信息 -->
+    <string name="msg_app_repress_to_close">再按一次退出</string>
+    <string name="msg_app_version_update_new">发现新版本，是否更新</string>
+    <string name="msg_user_is_login_on_other_device">该用户已在其他设备上登录</string>
+    <string name="msg_network_fail">网络连接失败，请检查您的网络设置</string>
+    <string name="msg_permission_storage_denied">请允许获取存储权限</string>
+    <string name="msg_permission_camera_denied_for_codescan">获取相机权限失败，无法进行扫描</string>
+    <string name="msg_permission_camera_denied">请允许获取相机权限</string>
+    <string name="msg_device_error">设备有故障，请联系客服</string>
+    <string name="msg_message_delete">是否确认删除消息</string>
+    <string name="msg_message_no_selected">请选择要删除的消息</string>
+    <string name="msg_device_messages_delete_failure">故障消息删除失败</string>
+    <string name="msg_message_mark_read">是否确认将选中的故障消息标记为已读</string>
+    <string name="msg_delete_device">是否确认删除设备</string>
+    <string name="msg_delete_device_failure">删除设备失败</string>
+    <string name="msg_delete_attention">是否确认删除该用户</string>
+    <string name="msg_delete_attention_failure">副控删除失败</string>
+    <string name="msg_device_add_success">设备添加成功</string>
+    <string name="msg_device_add_failure">设备添加失败</string>
+    <string name="msg_input_nickname_is_null_for_userinfo">请输入长度为1-12位的昵称</string>
+    <string name="msg_nickname_is_null">请输入长度为1-12位的昵称</string>
+    <string name="msg_input_nickname_is_null_for_devicename">请输入长度为1-20位的昵称</string>
+    <string name="msg_nickname_is_trim_start_or_end">昵称不能用空格开头和结尾</string>
+    <string name="msg_device_rename_failure">修改设备名称备注失败</string>
+
+    <!-- 商城 -->
+    <string name="shop_title">飞科商城</string>
+    <string name="mall_index_search_hint">剃须刀</string>
+    <string name="mall_index_star">明星产品 </string>
+    <string name="mall_index_new">新品上市</string>
+    <string name="mall_index_hotsale">热卖产品</string>
+    <string name="mall_index_discount">特价商品</string>
+    <string name="mall_index_help">帮助中心</string>
+    <string name="mall_index_support">服务支持</string>
+    <string name="mall_index_guide">购物指南</string>
+    <string name="mall_index_points">积分规则</string>
+    <string name="mall_index_introduction">飞科介绍</string>
+    <string name="mall_index_freight">配送支付</string>
+    <string name="mall_index_warranty">保修政策</string>
+    <string name="mall_index_news">飞科新闻</string>
+    <string name="mall_msg_goods_not_on_sell">产品即将上线，敬请期待</string>
+
+    <!-- 设备 -->
+    <string name="device_title">我的设备</string>
+    <string name="device_tips_not_login">您还未登录,请登录后添加并使用设备</string>
+    <string name="device_tips_not_network">网络连接失败，请检查您的网络设置</string>
+    <string name="device_tips_failure">数据加载失败，请重新加载</string>
+    <string name="device_reload_device">重新加载</string>
+    <string name="device_add_device">添加设备</string>
+    <string name="device_click_to_try">点击试用</string>
+    <string name="device_try_other_device">试用其他设备</string>
+    <string name="device_item_category_cleaner">智能空气净化器</string>
+    <string name="device_item_category_robot">智能扫地机器人</string>
+    <string name="device_item_category_scales_health">蓝牙健康秤</string>
+    <string name="device_item_category_scales_weight">蓝牙体重秤</string>
+    <string name="device_item_status_online">在线</string>
+    <string name="device_item_status_offline">不在线</string>
+    <string name="device_default_name_cleaner">智能空气净化器</string>
+    <string name="device_default_name_health_scales">智能健康秤</string>
+    <string name="device_default_name_weight_scales">智能健康秤</string>
+    <string name="device_default_name_robot">智能扫地机器人</string>
+    <string name="device_default_name_nose_trimmer">鼻毛修剪器</string>
+    <string name="device_default_name_humidifier">加湿器</string>
+
+    <!-- 设备设置 -->
+    <string name="device_setting_title">设置与管理</string>
+    <string name="device_setting_ion">离子净化</string>
+    <string name="device_setting_sensor">关机实时监测</string>
+    <string name="device_setting_sound_cleaner">净化器按键声音</string>
+    <string name="device_setting_filter">滤网管理</string>
+    <string name="device_setting_manager">设备管理</string>
+    <string name="device_setting_rename">设备名称备注</string>
+    <string name="device_setting_device_error">设备故障消息</string>
+    <string name="device_setting_reset_wifi">更换Wi-Fi</string>
+    <string name="device_setting_update">固件升级</string>
+    <string name="device_setting_private">隐私模式</string>
+    <string name="device_setting_family">家庭</string>
+    <string name="device_setting_target">目标</string>
+    <string name="device_setting_manage">设备管理</string>
+    <string name="device_setting_update_new">new</string>
+    <string name="device_setting_share">分享</string>
+    <string name="device_setting_unmatchdata">未匹配数据</string>
+    <string name="device_setting_userinfo">个人信息</string>
+    <string name="device_setting_weight_unit">体重单位</string>
+    <string name="device_setting_sound">加湿器按键声音</string>
+
+    <!-- 设备管理 -->
+    <string name="device_management_title">设备管理</string>
+    <string name="device_management_product_category_label">型　　　号：</string>
+    <string name="device_management_product_mac_label">序　列　号：</string>
+    <string name="device_management_product_wifissid">Wi－Fi名称：</string>
+    <string name="device_management_product_qrcode">设备二维码：</string>
+    <string name="device_management_attention_user">连接此设备的用户</string>
+    <string name="device_management_attention_user_delete">删除</string>
+    <string name="device_management_delete">删除设备</string>
+    <string name="pop_device_qrcode_description">设备二维码</string>
+
+    <!-- 设备名称备注 -->
+    <string name="device_rename_title">设备名称备注</string>
+    <string name="device_rename_confirm">确认</string>
+    <string name="device_rename_hint">请输入您的设备名称备注</string>
+
+    <!-- 添加设备 -->
+    <string name="device_add_title">添加设备</string>
+    <string name="device_add_tips">请打开设备电源并开始添加设备</string>
+    <string name="device_add_scan">扫二维码添加</string>
+    <string name="device_add_scan_error">飞科智能无法识别此二维码，请联系客服</string>
+    <string name="device_add_scan_illegal">飞科智能无法识别此二维码</string>
+    <string name="device_add_manual">手动添加</string>
+    <string name="device_add_no_wifi">当前手机未连接Wi-Fi，请连接后重试</string>
+    <string name="device_add_network_confirm">为保证连接成功，请确定当前的\nWi-Fi为2.4GHz频段</string>
+    <string name="msg_add_device_success">设备添加成功</string>
+    <string name="device_add_msg_reset_wifi_success">重置网络成功</string>
+
+    <!-- 扫一扫 -->
+    <string name="code_scan_title">扫一扫</string>
+    <string name="msg_default_status">将二维码放入框内，即可自动扫描</string>
+    <string name="from_gallery">相册</string>
+    <string name="light">闪光灯</string>
+    <string name="msg_camera_framework_bug">请允许飞科智能访问您的摄像头</string>
+    <string name="msg_code_scan_failure">扫描的图片中不包含二维码</string>
+    <string name="msg_code_scan_ing">正在扫描...</string>
+
+    <!-- 添加蓝牙设备 -->
+    <string name="add_ble_device_title700123">FH7001/2/3</string>
+    <string name="add_ble_device_title700568">FH7005/6/8</string>
+    <string name="add_ble_device_default_value">0.0</string>
+    <string name="add_ble_device_default_unit">公斤</string>
+    <string name="add_ble_device_tips">请站到秤上完成连接</string>
+    <string name="add_ble_device_cancel">取消绑定</string>
+    <string name="add_ble_device_tips2">已发现智能健康秤，请确认秤上显示的数值\n和下方数值相同，即可确认绑定</string>
+    <string name="device_location_not_supported_cannot_scan">位置信息获取失败，无法进行添加设备</string>
+    <string name="device_location_need_open_gps">添加设备需要定位服务，请打开GPS再试</string>
+    <string name="device_location_not_supported_cannot_connect">位置信息获取失败，可能无法连接设备</string>
+    <string name="device_ble_not_supported">Bluetooth Low Energy not supported on device</string>
+    <string name="device_bluetooth_not_supported">Bluetooth not supported on device</string>
+    <string name="add_ble_device_retry">重新查找</string>
+    <string name="add_ble_device_confirm">确认绑定</string>
+    <string name="add_ble_device_error_added">您已经添加过该设备</string>
+
+    <!-- 设备类别 -->
+    <string name="device_type_title">选择设备</string>
+
+    <!-- 显示局域网搜索到的设备 -->
+    <string name="local_device_title">已搜到设备</string>
+    <string name="local_device_add_new_device">配置新设备</string>
+    <string name="local_device_category">型　号：</string>
+    <string name="local_device_mac">序列号：</string>
+    <string name="local_device_add">添加</string>
+    <!-- 配置网络 -->
+    <string name="wifi_setting_title">连接Wi-Fi</string>
+    <string name="wifi_setting_hint_wifi">请选择Wi-Fi</string>
+    <string name="wifi_setting_hint_pwd">请输入手机当前连接Wi-Fi的密码</string>
+    <string name="wifi_setting_next">下一步</string>
+    <string name="wifi_setting_wifi_error">Wi-Fi连接异常，请连接后重试</string>
+    <!-- 配置网络提示页 -->
+    <string name="wifi_setting_tipspage1_title_cleaner">连接设备</string>
+    <string name="wifi_setting_tipspage1_title_robot">连接设备</string>
+    <string name="wifi_setting_tipspage1_tips1">长按配网按键5秒开始配网</string>
+    <string name="wifi_setting_tipspage1_confirm">连接设备</string>
+    <string name="wifi_setting_tipspage2_title_cleaner">连接设备</string>
+    <string name="wifi_setting_tipspage2_no">否</string>
+    <string name="wifi_setting_tipspage2_yes">是</string>
+    <!-- 配置网络等待页面 -->
+    <string name="wifi_setting_loading_title">正在连接</string>
+    <string name="wifi_setting_loading_ing">正在连接网络...</string>
+    <string name="wifi_setting_success">设备配置成功，等待后续操作</string>
+    <string name="wifi_setting_failure_router">连接路由器失败</string>
+    <string name="wifi_setting_failure_verify">设备信息校验失败</string>
+    <string name="wifi_setting_failure_server">连接服务器失败</string>
+    <string name="wifi_setting_failure_reason_title">可能存在以下情况</string>
+    <string name="wifi_setting_failure_reason_router">1、手机所连Wi-Fi未在2.4G频段下\n2、路由器密码输入错误\n3、路由器连接设备过多\n4、路由器距离手机或设备比较远\n5、设备没有进入配网模式（Wi-Fi灯没有闪烁）</string>
+    <string name="wifi_setting_failure_reason_verify">1、设备型号选择错误\n2、设备二维码有误</string>
+    <string name="wifi_setting_failure_reason_server">1、路由器连接设备过多\n2、路由器距离设备比较远\n3、路由器网络不稳定</string>
+    <string name="wifi_setting_loading_cancel">取消连接</string>
+    <string name="wifi_setting_loading_retry">重新连接</string>
+    <string name="wifi_setting_loading_success_confirm">确认</string>
+    <string name="wifi_setting_loading_device_unauthorized">设备无法识别，请联系客服</string>
+
+    <!-- 设备故障 -->
+    <string name="device_error_title">设备故障消息</string>
+    <string name="device_error_tips_no_messages">当前设备无故障消息</string>
+    <string name="device_error_edit">编辑</string>
+    <string name="device_error_finish">完成</string>
+    <string name="device_error_select_all">全选</string>
+    <string name="device_error_cancel">取消</string>
+    <string name="device_error_delete">删除</string>
+
+    <!-- 故障详情 -->
+    <string name="device_error_detail_title">故障详情</string>
+    <string name="device_error_detail_msg_title">设备故障</string>
+    <string name="device_error_detail_msg_content">设备故障，请联系客服。</string>
+
+    <!-- 设备名片 -->
+    <string name="device_card_title">设备名片</string>
+    <string name="device_card_resetnetwork">配置网络</string>
+    <string name="device_card_add">添加</string>
+
+    <!-- 空气净化器控制页 -->
+    <string name="cleaner_control_title">飞科智能空气净化器</string>
+    <string name="cleaner_control_devicecity_city_default">--</string>
+    <string name="cleaner_control_devicecity_aqi">室外空气指数</string>
+    <string name="cleaner_control_devicecity_aqi_default">--</string>
+    <string name="cleaner_control_devicecity_aqi_grade_default">--</string>
+    <string name="cleaner_control_device_offline1">净化器不在线</string>
+    <string name="cleaner_control_device_offline2">请检查净化器后重新连接</string>
+    <string name="cleaner_control_device_sensor_off1">未设置</string>
+    <string name="cleaner_control_device_sensor_off2">关机实时监测功能</string>
+    <string name="cleaner_control_ion_pm">空气指数</string>
+    <string name="cleaner_control_temperature">温度</string>
+    <string name="cleaner_control_humidity">湿度</string>
+    <string name="cleaner_control_voc">空气异味</string>
+    <string name="cleaner_control_level_excellent">优</string>
+    <string name="cleaner_control_level_fine">良</string>
+    <string name="cleaner_control_level_bad">差</string>
+    <string name="cleaner_control_filter_manager">滤网管理</string>
+    <string name="cleaner_control_timer_null">未设置</string>
+    <string name="cleaner_control_power">开关</string>
+    <string name="cleaner_control_mode_auto">智能</string>
+    <string name="cleaner_control_speed">档位</string>
+    <string name="cleaner_control_mode_sleep">睡眠</string>
+    <string name="cleaner_control_timer">预约</string>
+    <string name="cleaner_control_msg_filter1_left_time_0_percent">初效滤网剩余时间为0，请尽快清洗</string>
+    <string name="cleaner_control_msg_filter1_left_time_10_percent">初效滤网剩余时间不足10%，请尽快清洗</string>
+    <string name="cleaner_control_msg_filter2_left_time_0_percent">高效夹炭复合滤网剩余时间为0，无法净化空气，请尽快购买</string>
+    <string name="cleaner_control_msg_filter2_left_time_5_percent">高效夹炭复合滤网剩余时间不足5%，请尽快购买</string>
+    <string name="cleaner_control_msg_filter2_left_time_10_percent">高效夹炭复合滤网剩余时间不足10%，请尽快购买</string>
+    <!-- 预约 -->
+    <string name="cleaner_timer_title">预约</string>
+    <string name="cleaner_timer_no_timer_tips">还没有任何预约</string>
+    <string name="cleaner_timer_add_new">添加预约开关机</string>
+
+    <string name="pop_cleaner_control_timer_zai">在</string>
+    <string name="pop_cleaner_control_timer_hour">小时</string>
+    <string name="pop_cleaner_control_timer_minute">分钟后关机</string>
+    <string name="pop_cleaner_control_timer_default">0:01</string>
+    <string name="pop_cleaner_control_timer_back">返回</string>
+    <string name="pop_cleaner_control_timer_cancel">取消设置</string>
+    <string name="pop_cleaner_control_timer_confirm">确定</string>
+    <!-- 风速 -->
+    <string name="pop_cleaner_control_wind_back">返回</string>
+    <string name="pop_cleaner_control_wind_confirm">确定</string>
+
+    <!-- 选择城市 -->
+    <string name="pop_cleaner_control_province_title">选择所在地区</string>
+    <!-- 空气质量 -->
+    <string name="air_quality_title">空气质量趋势图</string>
+    <string name="air_quality_outdoor_index">室外空气质量指数</string>
+    <string name="air_quality_outdoor_divider_city_and_date">　|　</string>
+    <string name="air_quality_outdoor_index_publish">发布</string>
+
+    <!-- 空气净化器设置 -->
+    <string name="cleaner_setting_msg_set_ion_power_off">关机状态下无法开启或关闭离子净化</string>
+    <string name="cleaner_setting_msg_set_ion_offline">设备不在线，无法开启或关闭离子净化</string>
+    <string name="cleaner_setting_msg_sensor_on_tips">关机实时监测开启后可以在关机状态下实时监测室内空气质量，但是每天大约增加0.05度电量损耗</string>
+    <string name="cleaner_setting_msg_set_sensor_power_off">关机状态下无法设置关机实时监测</string>
+    <string name="cleaner_setting_msg_set_sensor_offline">设备不在线，无法设置关机实时监测</string>
+    <string name="cleaner_setting_msg_set_sound_power_off">关机状态下无法开启或关闭净化器按键声音</string>
+    <string name="cleaner_setting_msg_set_sound_offline">设备不在线，无法开启或关闭净化器按键声音</string>
+
+    <!-- 滤网管理 -->
+    <string name="cleaner_filter_title">滤网管理</string>
+    <string name="cleaner_filter_filter1">外滤网</string>
+    <string name="cleaner_filter_filter2">内滤网</string>
+    <string name="cleaner_filter_filter1_name_9005">清洁滤网（不可水洗）</string>
+    <string name="cleaner_filter_filter2_name_9005">更换滤网</string>
+    <string name="cleaner_filter_filter1_left_time">已使用%1$s小时　建议%2$s小时后清洁</string>
+    <string name="cleaner_filter_filter1_left_time0">已使用%1$s小时　建议立即清洁</string>
+    <string name="cleaner_filter_filter2_left_time">已使用%1$s小时　建议%2$s小时后更换</string>
+    <string name="cleaner_filter_filter2_left_time0">已使用%1$s小时　建议立即更换</string>
+    <string name="cleaner_filter_reset">重置滤网</string>
+    <string name="cleaner_filter_buy">购买滤网</string>
+    <string name="cleaner_filter_confirm">完成</string>
+    <string name="cleaner_filter_reset_success">滤网重置成功</string>
+    <string name="cleaner_filter_reset_warning">是否确认需要重置滤网</string>
+    <string name="cleaner_filter1_reset_success">滤网1重置成功</string>
+    <string name="cleaner_filter2_reset_success">滤网2重置成功</string>
+    <string name="cleaner_filter_msg_filter_reset_offline">设备不在线，无法重置滤网</string>
+    <string name="cleaner_filter_msg_filter_reset_poweroff">关机状态下无法重置滤网</string>
+
+    <!-- 固件升级 -->
+    <string name="cleaner_update_title">固件升级</string>
+    <string name="cleaner_update_version">当前固件版本：1.0.</string>
+    <string name="cleaner_update_newest_verision">发现新版本：1.0.</string>
+    <string name="cleaner_update_newest_title">当前固件已是最新版本</string>
+    <string name="cleaner_update_check_new">立即升级</string>
+    <string name="cleaner_update_offline">设备不在线，无法进行固件升级</string>
+    <string name="cleaner_update_poweroff">关机状态下无法进行固件升级</string>
+    <string name="cleaner_update_msg_firmware_update_success">固件升级成功</string>
+    <string name="cleaner_update_msg_firmware_update_failure">连接超时，固件升级失败</string>
+    <string name="cleaner_update_msg_mcu_update_failure">连接超时，固件升级失败</string>
+
+    <!-- 健康秤 -->
+    <string name="ble_weight_unit_kilo_label">公斤</string>
+    <string name="ble_weight_unit_jin_label">斤</string>
+    <string name="ble_weight_unit_pound_label">磅</string>
+    <string name="ble_msg_device_not_find">未能搜索到附近的蓝牙设备，是否重新搜索</string>
+    <string name="ble_msg_weight_data_other_confirm">您是%s吗</string>
+    <string name="ble_msg_weight_data_confirm">监测到与上次数据出入较大，请确认是否为%s本人</string>
+    <string name="ble_msg_data_delete_confirm">是否确认删除记录</string>
+    <string name="ble_msg_data_delete_no_selected">请选择要删除的记录</string>
+    <string name="ble_msg_data_delete_failure">消息删除失败</string>
+    <string name="ble_msg_set_private_on_tips">开启隐私模式后，秤上将不会显示您的体重数据，仅在APP上显示</string>
+    <string name="ble_msg_family_member_delete_confirm">是否确认删除所选成员</string>
+    <string name="ble_msg_data_match_confirm">确认匹配选中的记录</string>
+    <string name="weight_target">"您已达标"</string>
+    <!-- 健康秤_控制页 -->
+    <string name="ble_control_title">蓝牙健康秤</string>
+    <string name="ble_control_weight">当前体重</string>
+    <string name="ble_control_weight_value">--</string>
+    <string name="ble_control_weight_value_overload">超载</string>
+    <string name="ble_control_weight_unit">公斤</string>
+    <string name="ble_control_weight_point_value">--</string>
+    <string name="ble_control_weight_point_unit">分</string>
+    <string name="ble_control_weight_point">健康评分</string>
+    <string name="ble_control_weight_compare_with_last_result_up">比上次增重%1s公斤</string>
+    <string name="ble_control_weight_compare_with_last_result_down">比上次减轻%1s公斤</string>
+    <string name="ble_control_weight_compare_with_target_result_up">达标还需增重%1s公斤</string>
+    <string name="ble_control_weight_compare_with_target_result_down">达标还需减轻%1s公斤</string>
+    <string name="ble_control_private">隐私模式</string>
+    <string name="ble_control_register">人体电阻：</string>
+    <string name="ble_control_register_value">--</string>
+    <string name="ble_control_bmi">BMI</string>
+    <string name="ble_control_bmi_value">--</string>
+    <string name="ble_control_fat">脂肪率</string>
+    <string name="ble_control_fat_value">--</string>
+    <string name="ble_control_water">水分率</string>
+    <string name="ble_control_water_value">--</string>
+    <string name="ble_control_muscle">肌肉量</string>
+    <string name="ble_control_muscle_value">--</string>
+    <string name="ble_control_metabolism">基础代谢</string>
+    <string name="ble_control_metabolism_value">--</string>
+    <string name="ble_control_metabolism_unit">kcal</string>
+    <string name="ble_control_bone">骨量</string>
+    <string name="ble_control_bone_value">--</string>
+    <string name="ble_control_protein">蛋白质率</string>
+    <string name="ble_control_protein_value">--</string>
+    <string name="ble_control_bodyage">身体年龄</string>
+    <string name="ble_control_bodyage_value">--</string>
+    <string name="ble_control_viscera">内脏脂肪</string>
+    <string name="ble_control_viscera_value">--</string>
+    <string name="ble_control_connect_warning">要连接设备，请确保手机已打开蓝牙</string>
+    <string name="ble_control_connect_setting">设置</string>
+    <string name="ble_control_connect">连接</string>
+    <string name="health_scale_data_des">人体脂肪率等测量数据仅供参考不可作为医疗诊断</string>
+
+    <!-- 健康秤_历史数据 -->
+    <string name="ble_history_title">曲线图</string>
+    <string name="ble_history_day">日</string>
+    <string name="ble_history_week">周</string>
+    <string name="ble_history_month">月</string>
+    <string name="ble_history_year">年</string>
+    <string name="ble_history_target">目标：</string>
+    <string name="ble_history_weight_value">--</string>
+    <string name="ble_history_unit">kg</string>
+    <string name="ble_history_daily_weight">日均体重</string>
+    <string name="ble_history_change">体重变化</string>
+    <string name="ble_history_weight">体重</string>
+    <string name="ble_history_bmi">BMI</string>
+    <string name="ble_history_fat">体脂率</string>
+    <string name="ble_history_viscera">内脏脂肪</string>
+    <!-- 健康秤_测量结果 -->
+    <string name="ble_weight_result_title">指标详情</string>
+    <string name="ble_weight_result_bmi_title">BMI</string>
+    <string name="ble_weight_result_bmi_tips">BMI是国际上通常用于衡量人体肥胖程度和是否健康的重要指标。</string>
+    <string name="ble_weight_result_bmi_default_value">1.0</string>
+    <string name="ble_weight_result_bmi_level1">偏瘦</string>
+    <string name="ble_weight_result_bmi_level2">标准</string>
+    <string name="ble_weight_result_bmi_level3">微胖</string>
+    <string name="ble_weight_result_bmi_level4">肥胖</string>
+    <string name="ble_weight_result_fat_title">脂肪率</string>
+    <string name="ble_weight_result_fat_tips">脂肪率是人体组成中脂肪占身体质量的百分比。</string>
+    <string name="ble_weight_result_fat_default_value">0.0%</string>
+    <string name="ble_weight_result_fat_level1">瘦</string>
+    <string name="ble_weight_result_fat_level2">偏瘦</string>
+    <string name="ble_weight_result_fat_level3">标准</string>
+    <string name="ble_weight_result_fat_level4">偏胖</string>
+    <string name="ble_weight_result_fat_level5">胖</string>
+    <string name="ble_weight_result_water_title">水分率</string>
+    <string name="ble_weight_result_water_tips">水分率是人体组成中总水分占身体质量的百分比。</string>
+    <string name="ble_weight_result_water_default_value">0.0%</string>
+    <string name="ble_weight_result_water_level1">不足</string>
+    <string name="ble_weight_result_water_level2">标准</string>
+    <string name="ble_weight_result_water_level3">优秀</string>
+    <string name="ble_weight_result_muscle_title">肌肉量</string>
+    <string name="ble_weight_result_muscle_tips">肌肉量是人体组成中肌肉质量的总和。</string>
+    <string name="ble_weight_result_muscle_default_value">0.0%</string>
+    <string name="ble_weight_result_muscle_level1">不足</string>
+    <string name="ble_weight_result_muscle_level2">标准</string>
+    <string name="ble_weight_result_muscle_level3">优秀</string>
+    <string name="ble_weight_result_bone_title">骨量</string>
+    <string name="ble_weight_result_bone_tips">骨量是人体组成中骨骼矿物质质量的总和。</string>
+    <string name="ble_weight_result_bone_default_value">0.0</string>
+    <string name="ble_weight_result_bone_level1">不足</string>
+    <string name="ble_weight_result_bone_level2">标准</string>
+    <string name="ble_weight_result_bone_level3">优秀</string>
+    <string name="ble_weight_result_metabolism_title">基础代谢</string>
+    <string name="ble_weight_result_metabolism_tips">基础代谢是指维持人体生命活动正常进行一天所需的最低能量，单位为千卡。</string>
+    <string name="ble_weight_result_metabolism_default_value_tips1">您的基础代谢：</string>
+    <string name="ble_weight_result_metabolism_default_value">0</string>
+    <string name="ble_weight_result_metabolism_default_value_tips2">大卡/天</string>
+    <string name="ble_weight_result_metabolism_level1">偏低</string>
+    <string name="ble_weight_result_metabolism_level2">达标</string>
+    <string name="ble_weight_result_viscera_title">内脏脂肪</string>
+    <string name="ble_weight_result_viscera_tips">内脏脂肪是人体脂肪中的一种，围绕着人的脏器，主要存在于腹腔内。通常用内脏脂肪指数来反映脏器周围脂肪堆积的程度。</string>
+    <string name="ble_weight_result_viscera_default_value">0</string>
+    <string name="ble_weight_result_viscera_level1">正常</string>
+    <string name="ble_weight_result_viscera_level2">偏高</string>
+    <string name="ble_weight_result_viscera_level3">危险</string>
+    <string name="ble_weight_result_protein_title">蛋白质率</string>
+    <string name="ble_weight_result_protein_tips">蛋白质率是人体组成中蛋白质占身体质量的百分比。</string>
+    <string name="ble_weight_result_protein_default_value">0</string>
+    <string name="ble_weight_result_protein_level1">不足</string>
+    <string name="ble_weight_result_protein_level2">标准</string>
+    <string name="ble_weight_result_protein_level3">优秀</string>
+    <string name="ble_weight_result_bodyage_title">身体年龄</string>
+    <string name="ble_weight_result_bodyage_tips">身体年龄是指以基础代谢率为基础，根据身高、体重、脂肪率、肌肉量等综合计算得出，用于判定身体状况的指标。</string>
+    <string name="ble_weight_result_bodyage_default_value">0</string>
+    <string name="ble_weight_result_bodyage_level1">偏低</string>
+    <string name="ble_weight_result_bodyage_level2">标准</string>
+    <string name="ble_weight_result_bodyage_level3">偏高</string>
+    <string name="ble_weight_result_error">人体电阻测量失败</string>
+    <string name="ble_weight_result_nodata">您还未称过体重</string>
+    <!-- 健康秤_设置 -->
+    <string name="ble_settings_update_tips">请连接设备后重试</string>
+    <!-- 健康秤_家庭 -->
+    <string name="ble_settings_family_title">家庭</string>
+    <string name="ble_settings_family_edit">编辑</string>
+    <string name="ble_settings_family_confirm">完成</string>
+    <string name="ble_settings_family_member">家庭</string>
+    <string name="ble_settings_family_relation_primary">主账号</string>
+    <string name="ble_settings_family_visitor">访客</string>
+    <string name="ble_settings_family_add_member">添加成员</string>
+    <string name="ble_settings_family_delete_member">删除成员</string>
+    <string name="ble_settings_family_binduser_title">选择用户</string>
+    <string name="ble_settings_family_binduser_add_new">添加其他用户</string>
+    <string name="ble_settings_family_binduser_add_success">添加成功</string>
+    <string name="ble_settings_family_delete_null">请选择要删除的成员</string>
+    <!-- 健康秤_目标 -->
+    <string name="ble_settings_target_title">目标</string>
+    <string name="ble_settings_target_targetweight">目标体重</string>
+    <string name="ble_settings_target_targetweight_default_value">--</string>
+    <string name="ble_settings_target_targetweight_unit">公斤</string>
+    <string name="ble_settings_target_best_weight">您的标准体重范围</string>
+    <string name="ble_settings_target_best_weight_value">--</string>
+    <string name="ble_settings_target_settarget">设定目标</string>
+    <string name="ble_settings_target_suggest_down">要达成这个目标，您还需减轻</string>
+    <string name="ble_settings_target_suggest_up">要达成这个目标，您还需增重</string>
+    <string name="ble_settings_target_confirm">确认</string>
+    <string name="ble_settings_target_cancel">取消设定 </string>
+
+    <!-- 健康秤_固件升级 -->
+    <string name="ble_settings_firmware_update_title">固件升级</string>
+    <string name="ble_settings_firmware_update_tc_start">透传开始指令</string>
+    <string name="ble_settings_firmware_update_ftc_request">非透传请求</string>
+    <string name="ble_settings_firmware_update_ftc_start">非透传开始</string>
+    <string name="ble_settings_firmware_update_tc_finish">透传完成指令</string>
+    <string name="ble_settings_firmware_update_version">当前固件版本:</string>
+    <string name="ble_settings_firmware_update_check_new">立即升级</string>
+    <string name="ble_settings_firmware_update_already_newest">您的设备固件已是最新版本</string>
+    <string name="ble_settings_firmware_update_has_new">发现新版本：</string>
+    <string name="ble_settings_firmware_update_failure">连接超时，固件升级失败</string>
+    <string name="ble_settings_firmware_update_success">升级成功，最新固件版本为</string>
+    <string name="ble_settings_firmware_update_msg_is_ota_continue">蓝牙秤当前处于固件升级模式，是否继续升级</string>
+    <string name="ble_settings_firmware_update_msg_ota_check_new_failure">固件升级失败：检查版本失败</string>
+    <string name="ble_settings_firmware_update_disconnect_failure">蓝牙已断开连接，固件升级失败</string>
+    <!-- 健康秤_分享 -->
+    <string name="ble_settings_share_title">分享</string>
+    <string name="ble_settings_share_weight">当前体重</string>
+    <string name="ble_settings_share_weight_value">--</string>
+    <string name="ble_settings_share_weight_unit">--</string>
+    <string name="ble_settings_share_point">健康评分</string>
+    <string name="ble_settings_share_point_value">--</string>
+    <string name="ble_settings_share_point_unit">分</string>
+    <string name="ble_settings_share_compare_down">比上次减轻</string>
+    <string name="ble_settings_share_compare_up">比上次增重</string>
+    <string name="ble_settings_share_compare_value">--</string>
+    <string name="ble_settings_share_compare_unit">公斤</string>
+    <string name="ble_settings_share_bmi">BMI</string>
+    <string name="ble_settings_share_bmi_value">--</string>
+    <string name="ble_settings_share_bmi_level1">偏瘦</string>
+    <string name="ble_settings_share_bmi_level2">标准</string>
+    <string name="ble_settings_share_bmi_level3">超重</string>
+    <string name="ble_settings_share_bmi_level4">肥胖</string>
+    <string name="ble_settings_share_metabolism">基础代谢</string>
+    <string name="ble_settings_share_metabolism_value">--</string>
+    <string name="ble_settings_share_fat">脂肪率</string>
+    <string name="ble_settings_share_fat_value">--</string>
+    <string name="ble_settings_share_fat_level1">瘦</string>
+    <string name="ble_settings_share_fat_level2">偏瘦</string>
+    <string name="ble_settings_share_fat_level3">标准</string>
+    <string name="ble_settings_share_fat_level4">偏胖</string>
+    <string name="ble_settings_share_fat_level5">肥胖</string>
+    <string name="ble_settings_share_bone">骨量</string>
+    <string name="ble_settings_share_bone_value">--</string>
+    <string name="ble_settings_share_bone_level1">偏低</string>
+    <string name="ble_settings_share_bone_level2">标准</string>
+    <string name="ble_settings_share_bone_level3">优秀</string>
+    <string name="ble_settings_share_water">水分率</string>
+    <string name="ble_settings_share_water_value">--</string>
+    <string name="ble_settings_share_water_level1">偏低</string>
+    <string name="ble_settings_share_water_level2">标准</string>
+    <string name="ble_settings_share_water_level3">优秀</string>
+    <string name="ble_settings_share_viscera">内脏脂肪</string>
+    <string name="ble_settings_share_viscera_value">--</string>
+    <string name="ble_settings_share_viscera_level1">正常</string>
+    <string name="ble_settings_share_viscera_level2">偏高</string>
+    <string name="ble_settings_share_viscera_level3">超标</string>
+    <string name="ble_settings_share_protein">蛋白质率</string>
+    <string name="ble_settings_share_protein_value">--</string>
+    <string name="ble_settings_share_protein_level1">偏低</string>
+    <string name="ble_settings_share_protein_level2">标准</string>
+    <string name="ble_settings_share_protein_level3">优秀</string>
+    <string name="ble_settings_share_bodyage">身体年龄</string>
+    <string name="ble_settings_share_bodyage_value">--</string>
+    <string name="ble_settings_share_bodyage_level1">偏低</string>
+    <string name="ble_settings_share_bodyage_level2">标准</string>
+    <string name="ble_settings_share_bodyage_level3">优秀</string>
+    <string name="ble_settings_share_muscle">肌肉量</string>
+    <string name="ble_settings_share_muscle_value">--</string>
+    <string name="ble_settings_share_muscle_level1">偏低</string>
+    <string name="ble_settings_share_muscle_level2">标准</string>
+    <string name="ble_settings_share_muscle_level3">优秀</string>
+    <string name="ble_settings_share_appname">飞科智能</string>
+    <string name="ble_settings_share_weibo">微博</string>
+    <string name="ble_settings_share_wechat">微信</string>
+    <string name="ble_settings_share_qq">QQ</string>
+    <string name="ble_settings_share_wechatcircle">朋友圈</string>
+    <string name="ble_settings_share_qzone">QQ空间</string>
+    <!-- 健康秤_未匹配数据 -->
+    <string name="ble_settings_unmatch_data_title">未匹配记录</string>
+    <string name="ble_settings_unmatch_data_edit">编辑</string>
+    <string name="ble_settings_unmatch_data_confirm">完成</string>
+    <string name="ble_settings_unmatch_data_no_data_tips">没有未匹配记录</string>
+    <string name="ble_settings_unmatch_data_match">匹配记录</string>
+    <string name="ble_settings_unmatch_data_delete">删除记录</string>
+    <!-- 健康秤_个人信息编辑 -->
+    <string name="ble_settings_userinfo_title">个人信息</string>
+    <string name="ble_settings_userinfo_cofirm">完成</string>
+    <string name="ble_settings_userinfo_nickname">昵称</string>
+    <string name="ble_settings_userinfo_nickname_hint">请输入您的用户名</string>
+    <string name="ble_settings_userinfo_sex">性别</string>
+    <string name="ble_settings_userinfo_sex_male">男</string>
+    <string name="ble_settings_userinfo_sex_female">女</string>
+    <string name="ble_settings_userinfo_height">身高</string>
+    <string name="ble_settings_userinfo_height_default">身高/厘米</string>
+    <string name="ble_settings_userinfo_cm">厘米</string>
+    <string name="ble_settings_userinfo_birth">出生</string>
+    <string name="ble_settings_userinfo_year_default">1990</string>
+    <string name="ble_settings_userinfo_year">年</string>
+    <string name="ble_settings_userinfo_month_default">6</string>
+    <string name="ble_settings_userinfo_month">月</string>
+    <string name="ble_settings_userinfo_pop_cancel">取消</string>
+    <string name="ble_settings_userinfo_pop_confirm">确认</string>
+    <!-- 蓝牙秤历史记录 -->
+    <string name="ble_history_record_delete">删除记录</string>
+    <string name="ble_history_record_title">历史记录</string>
+    <string name="ble_history_record_detail_title">记录详情</string>
+
+    <!-- 体重秤_控制页 -->
+    <string name="ble_weight_scale_control_title">蓝牙体重秤</string>
+    <string name="ble_weight_scale_control_weight">当前体重</string>
+    <string name="ble_weight_scale_control_weight_value">--</string>
+    <string name="ble_weight_scale_control_unit_value">_</string>
+    <string name="ble_weight_scale_control_bmi">BMI</string>
+    <string name="ble_weight_scale_control_bmi_value">--</string>
+    <string name="ble_weight_scale_control_bmi_level_value">--</string>
+    <string name="ble_weight_scale_control_day">日</string>
+    <string name="ble_weight_scale_control_week">周</string>
+    <string name="ble_weight_scale_control_month">月</string>
+    <string name="ble_weight_scale_control_year">年</string>
+
+    <!-- 鼻毛修剪器_添加设备 -->
+    <string name="nose_trimmer_add_title">正在搜索</string>
+    <string name="nose_trimmer_add_tips1">发现可连接设备</string>
+    <string name="nose_trimmer_add_tips2">长按开机键6秒至设备指示灯闪烁开启蓝牙</string>
+    <string name="nose_trimmer_add_tips3">请您将要绑定的设备靠近手机</string>
+    <string name="nose_trimmer_add_msg_device_not_find">没有找到设备，是否重新搜索</string>
+    <string name="nose_trimmer_add_msg_device_add_failure">添加设备失败</string>
+    <!-- 鼻毛修剪器_控制页 -->
+    <string name="nose_trimmer_control_title">飞科智能鼻毛修剪器</string>
+    <string name="nose_trimmer_control_device_offline1">未检测到设备</string>
+    <string name="nose_trimmer_control_device_offline2">请检查设备是否已经连接</string>
+    <string name="nose_trimmer_control_calendar_title">历史使用详情</string>
+    <string name="previous">Go to previous</string>
+    <string name="next">Go to next</string>
+    <string name="calendar">Calendar</string>
+
+    <string-array name="nose_trimmer_control_calendar_month_array">
+        <item>1月</item>
+        <item>2月</item>
+        <item>3月</item>
+        <item>4月</item>
+        <item>5月</item>
+        <item>6月</item>
+        <item>7月</item>
+        <item>8月</item>
+        <item>9月</item>
+        <item>10月</item>
+        <item>11月</item>
+        <item>12月</item>
+    </string-array>
+
+    <string name="nose_trimmer_control_speed_slow">低速</string>
+    <string name="nose_trimmer_control_speed_medium">中速</string>
+    <string name="nose_trimmer_control_speed_high">高速</string>
+    <string name="nose_trimmer_control_power_off">关机</string>
+    <string name="nose_trimmer_control_power_on">开机</string>
+    <string name="nose_trimmer_control_timer">预约提醒</string>
+    <string name="nose_trimmer_control_timer_pop_back">返回</string>
+    <string name="nose_trimmer_control_timer_pop_cancel">取消设置</string>
+    <string name="nose_trimmer_control_timer_pop_confirm">确定</string>
+    <string name="nose_trimmer_control_timer_pop_time">预约时间</string>
+    <string name="nose_trimmer_control_timer_pop_time_tips0">在</string>
+    <string name="nose_trimmer_control_timer_pop_time_tips_month">月</string>
+    <string name="nose_trimmer_control_timer_pop_time_tips_day">日</string>
+    <string name="nose_trimmer_control_timer_pop_time_tips_hour">时</string>
+    <string name="nose_trimmer_control_timer_pop_time_tips1">提醒</string>
+    <string name="nose_trimmer_control_timer_pop_repeat">重复</string>
+
+    <string-array name="nose_trimmer_control_timer_pop_repeat_value_array">
+        <item>永不</item>
+        <item>每两周</item>
+        <item>每月</item>
+        <item>每两月</item>
+    </string-array>
+
+    <string name="nose_trimmer_control_light">照明灯</string>
+    <string name="nose_trimmer_control_search">查找</string>
+    <string name="nose_trimmer_control_battery_value_default">--</string>
+    <string name="nose_trimmer_control_battery_unit_value">%</string>
+    <string name="nose_trimmer_control_charge_status_default">--</string>
+    <string name="nose_trimmer_control_charge_status_off">剩余电量</string>
+    <string name="nose_trimmer_control_charge_status_on">充电中</string>
+
+    <!-- 鼻毛修剪器_设置页：统一引用设备设置页 -->
+
+    <!-- 加湿器_控制页 -->
+    <string name="humidifier_control_title">飞科智能加湿器</string>
+    <string name="humidifier_control_device_offline_tips1">未检测到设备</string>
+    <string name="humidifier_control_device_offline_tips2">请检查设备是否已经连接</string>
+    <string name="humidifier_control_device_online_poweroff_sensoroff_tips1">未设置</string>
+    <string name="humidifier_control_device_online_poweroff_sensoroff_tips2">关机实时监测功能</string>
+    <string name="humidifier_control_water_level">水量提示</string>
+    <string name="humidifier_control_water_level_value">--</string>
+    <string name="humidifier_control_water_level_value_above_level">充足</string>
+    <string name="humidifier_control_water_level_value_under_level">缺水</string>
+    <string name="humidifier_control_temp">室内温度</string>
+    <string name="humidifier_control_temp_value">--</string>
+    <string name="humidifier_control_humidity">室内湿度</string>
+    <string name="humidifier_control_humidity_level_default">--</string>
+    <string name="humidifier_control_humidity_level_dry">干燥</string>
+    <string name="humidifier_control_humidity_level_comfort">舒适</string>
+    <string name="humidifier_control_humidity_level_humid">潮湿</string>
+    <string name="humidifier_control_humidity_value_default">--</string>
+    <string name="humidifier_control_humidity_unit">%</string>
+    <string name="humidifier_control_power_on">开机</string>
+    <string name="humidifier_control_power_off">关机</string>
+    <string name="humidifier_control_speed_one">一档</string>
+    <string name="humidifier_control_speed_two">二挡</string>
+    <string name="humidifier_control_speed_three">三挡</string>
+    <string name="humidifier_control_speed_auto">自动模式</string>
+    <string name="humidifier_control_speed_auto_show">自动</string>
+    <string name="humidifier_control_speed_sleep">睡眠模式</string>
+    <string name="humidifier_control_speed_sleep_show">睡眠</string>
+    <string name="humidifier_control_timer">预约</string>
+    <string name="humidifier_control_light_full">灯光全亮</string>
+    <string name="humidifier_control_light_half">灯光半亮</string>
+    <string name="humidifier_control_light_out">灯光熄灭</string>
+    <string name="humidifier_control_msg_cannot_set_speed_without_water">缺水状态下，无法设置档位</string>
+    <!-- 加湿器_分享页 -->
+    <string name="humidifier_share_weibo">微博</string>
+    <string name="humidifier_share_wechat">微信</string>
+    <string name="humidifier_share_qq">QQ</string>
+    <string name="humidifier_share_wechatcircle">朋友圈</string>
+    <string name="humidifier_share_qzone">QQ空间</string>
+    <!-- 加湿器_档位控制页 -->
+    <string name="humidifier_speed_title">档位调节</string>
+    <string name="humidifier_speed_one">一档</string>
+    <string name="humidifier_speed_two">二挡</string>
+    <string name="humidifier_speed_three">三挡</string>
+    <string name="humidifier_speed_auto">自动模式</string>
+    <string name="humidifier_speed_sleep">睡眠模式</string>
+    <string name="humidifier_speed_confirm">确定</string>
+    <!-- 加湿器_灯光控制页 -->
+    <string name="humidifier_light_title">灯光调节</string>
+    <string name="humidifier_light_sub_title">灯光调节</string>
+    <string name="humidifier_light_full">全亮</string>
+    <string name="humidifier_light_half">半亮</string>
+    <string name="humidifier_light_out">熄灭</string>
+    <string name="humidifier_light_confirm">确定</string>
+    <!-- 加湿器_定时页面 -->
+    <string name="humidifier_timer_title">预约时间</string>
+    <string name="humidifier_timer_confirm">确定</string>
+    <string name="humidifier_timer_turn_on">开机</string>
+    <string name="humidifier_timer_turn_off">关机</string>
+    <string name="humidifier_timer_hour">时</string>
+    <string name="humidifier_timer_minute">分</string>
+    <string name="humidifier_timer_repeat">重复</string>
+    <string name="humidifier_timer_repeat_never">永不</string>
+    <string name="humidifier_timer_repeat_everyday">每天</string>
+    <string name="humidifier_timer_repeat_weekday">工作日</string>
+    <string name="humidifier_timer_repeat_weekend">周末</string>
+    <string name="humidifier_timer_repeat_sun">每周日</string>
+    <string name="humidifier_timer_repeat_mon">每周一</string>
+    <string name="humidifier_timer_repeat_tue">每周二</string>
+    <string name="humidifier_timer_repeat_wen">每周三</string>
+    <string name="humidifier_timer_repeat_thu">每周四</string>
+    <string name="humidifier_timer_repeat_fri">每周五</string>
+    <string name="humidifier_timer_repeat_sat">每周六</string>
+    <string name="humidifier_timer_cancel">取消预约</string>
+    <string name="humidifier_timer_msg_set_timer_success">设置预约成功</string>
+    <string name="humidifier_timer_msg_cancel_timer_success">取消预约成功</string>
+    <!-- 加湿器_设置页 -->
+    <string name="humidifier_setting_msg_set_ion_power_off">关机状态下无法开启或关闭负离子净化</string>
+    <string name="humidifier_setting_msg_set_ion_offline">设备不在线，无法开启或关闭负离子净化</string>
+    <string name="humidifier_setting_msg_set_ion_without_water">缺水状态下，无法开启或关闭负离子净化</string>
+    <string name="humidifier_setting_msg_set_sensor_power_off">关机状态下无法设置关机实时监测</string>
+    <string name="humidifier_setting_msg_set_sensor_offline">设备不在线，无法设置关机实时监测</string>
+    <string name="humidifier_setting_msg_set_sound_power_off">关机状态下无法开启或关闭加湿器按键声音</string>
+    <string name="humidifier_setting_msg_set_sound_offline">设备不在线，无法开启或关闭加湿器按键声音</string>
+    <string name="humidifier_setting_msg_device_sensor_on_tips">关机实时监测开启后可以在关机状态下实时监测室内温湿度</string>
+    <!-- 加湿器_目标 -->
+    <string name="humidifier_setting_target_title">目标湿度</string>
+    <string name="humidifier_setting_target_humidity_percent40">40%</string>
+    <string name="humidifier_setting_target_humidity_percent50">50%</string>
+    <string name="humidifier_setting_target_humidity_percent60">60%</string>
+    <string name="humidifier_setting_target_humidity_percent70">70%</string>
+    <string name="humidifier_setting_target_humidity_percent80">80%</string>
+    <string name="humidifier_setting_target_tips">只有在自动模式下，可以设置目标湿度，点击确定后，将自动切换到自动模式</string>
+    <string name="humidifier_setting_target_confirm">确定</string>
+    <string name="humidifier_setting_target_msg_cannot_set_offline">设备不在线，无法设置目标湿度</string>
+    <string name="humidifier_setting_target_msg_cannot_set_power_off">关机状态下无法设置目标湿度</string>
+    <string name="humidifier_setting_target_msg_cannot_set_without_water">缺水状态下，无法设置湿度</string>
+
+    <!-- 发现 -->
+    <string name="discover_title">发现</string>
+    <string name="discover_promotion">活动</string>
+    <string name="discover_service">服务</string>
+
+    <!-- 服务 -->
+    <string name="service_title">服务反馈</string>
+    <string name="onlinequery">在线客服</string>
+    <string name="spots">服务网点</string>
+    <string name="spots_detail">网点详情</string>
+    <string name="feedback">意见反馈</string>
+    <string name="hints">帮助信息</string>
+    <string name="tips">二维码生成器</string>
+    <string name="phone">客服电话</string>
+    <string name="phonenumber">400-8878282</string>
+    <string name="spots_detail_phone_title">服务电话：</string>
+    <!-- 帮助信息 -->
+    <string name="install">APP安装</string>
+    <string name="bind">设备绑定</string>
+    <string name="integrarule">积分规则</string>
+
+    <!-- 个人中心 -->
+    <string name="mine_title">个人中心</string>
+    <string name="mine_login_register">注册</string>
+    <string name="mine_login_login">立即登录</string>
+    <string name="mine_username">188****8888</string>
+    <string name="mine_device_num">%1$s个智能设备</string>
+    <string name="mine_my_mall">个人商城</string>
+    <string name="mine_message_center">消息中心</string>
+    <string name="mine_service">服务反馈</string>
+    <string name="mine_feedback">意见反馈</string>
+    <string name="mine_about">关于飞科</string>
+    <string name="mine_about_content">\n\t\t\t\t上海飞科电器股份有限公司创建于1999年，历经18年的跨越式发展，现已成为一家以“技术研发”和“品牌运营”为核心竞争力，集剃须刀及个人护理电器、生活电器的研发、制造、销售于一体的企业。飞科公司现拥有110多项自主创新专利，是剃须刀行业国家标准参与起草单位，是中国个人护理电器领导品牌。\n\n\t\t\t\t公司产品：电动剃须刀、女士剃毛器、毛球修剪器、鼻毛修剪器、电吹风、理发器、烫发器、电熨斗、挂烫机、加湿器、智能扫地机、吸尘器、智能空气净化器、智能健康秤。凭借“时尚、简约、科技”的设计理念和严密完善的质量管理体系，产品以其创新快、质量好、服务优而畅销中国及美国、欧盟、日本、俄罗斯、印度、东南亚等30多个国家和地区。\n\n\t\t\t\t“技术领先、质量领先、成本领先、营销网络领先、品牌影响力领先”是企业核心经营理念，也是推动飞科公司快速发展的源泉。公司先后通过了ISO9001:2015国际质量管理体系认证、ISO14001:2015国际环境管理体系认证、标准化管理体系认证、计量管理体系认证、GS认证、CQC产品安全认证、CE认证、RoHS认证、CCC认证。</string>
+    <string name="mine_settings">系统设置</string>
+    <string name="mine_update">版本信息</string>
+    <string name="logined">已登录</string>
+
+    <!-- 消息中心 -->
+    <string name="msgcenter_title">消息中心</string>
+    <string name="msgcenter_nomessage">还没有任何消息</string>
+    <string name="msgcenter_edit">编辑</string>
+    <string name="msgcenter_done">完成</string>
+    <string name="msgcenter_mark">全选</string>
+    <string name="msgcenter_cancel">取消</string>
+    <string name="msgcenter_delete">删除</string>
+    <string name="msgdetail_title">消息详情</string>
+    <!-- 客服 -->
+    <string name="choose_upload">choose</string>
+    <string name="options">设置</string>
+
+    <string-array name="titles">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <!-- 登录 -->
+    <string name="login_title">用户登录</string>
+    <string name="login_name">账号：</string>
+    <string name="login_hint_name">手机号/邮箱</string>
+    <string name="login_pwd">密码：</string>
+    <string name="login_hint_pwd">密码</string>
+    <string name="login_to_register">立即注册</string>
+    <string name="login_to_forget">忘记密码</string>
+    <string name="login_confirm">登 录</string>
+    <string name="login_outer_login">其他方式登录</string>
+    <string name="login_outer_weixin">微信</string>
+    <string name="login_outer_qq">QQ</string>
+    <string name="login_outer_weibo">微博</string>
+    <string name="login_outer_zhifubao">支付宝登录</string>
+    <string name="login_outer_jingdong">京东登录</string>
+    <string name="login_fail">登录失败</string>
+    <string name="login_fail_timeout">登录失败，请检查网络设置</string>
+    <string name="login_not_exists">用户名不存在</string>
+    <string name="login_error">请输入正确的用户名与密码</string>
+    <string name="login_msg_phone_num_error">请输入正确的手机号码或者邮箱号码</string>
+    <string name="login_msg_password_is_null">请输入密码</string>
+    <!-- 注册 -->
+    <string name="register_title">新用户注册</string>
+    <string name="register_username">手机号：</string>
+    <string name="register_hint_username">手机号</string>
+    <string name="register_code">验证码：</string>
+    <string name="register_hint_code">验证码</string>
+    <string name="register_get_code">获取验证码</string>
+    <string name="register_pwd">密码：</string>
+    <string name="register_hint_pwd">密码</string>
+    <string name="register_confirm">注 册</string>
+    <string name="register_tip1">我同意</string>
+    <string name="register_tip2">飞科电器服务协议</string>
+    <string name="register_tip3">及</string>
+    <string name="register_tip4">隐私政策</string>
+    <string name="register_tips_click_for_agree">点击注册表示同意</string>
+    <string name="register_text_agreement">飞科用户服务协议</string>
+    <string name="agreement_title">飞科用户服务协议</string>
+    <string name="agreement_guide">首部与导言</string>
+    <string name="agreement_welcome">欢迎你使用智能软件及服务</string>
+    <string name="register_msg_validate_time">60秒内不可再次发送验证码</string>
+    <string name="register_msg_input_phone_num_error">请输入正确格式的手机号</string>
+    <string name="register_msg_code_is_send">手机验证码已发送</string>
+    <string name="register_msg_code_is_null">验证码不能为空</string>
+    <string name="register_msg_input_password_error">请输入6-20位的数字或字母密码</string>
+    <string name="register_msg_input_phone_already_registered">该手机号已注册，请选择登录操作</string>
+    <string name="register_msg_register_success">新用户注册成功</string>
+    <string name="register_msg_register_failure">验证码错误，新用户注册失败</string>
+
+    <!-- 找回密码 -->
+    <string name="reset_pwd_title">重置密码</string>
+    <string name="reset_pwd_username">手机号：</string>
+    <string name="reset_pwd_hint_username">请输入您的手机号/邮箱</string>
+    <string name="reset_pwd_code">验证码：</string>
+    <string name="reset_pwd_hint_code">手机验证码</string>
+    <string name="reset_pwd_get_code">获取验证码</string>
+    <string name="reset_pwd_resend_left_time">%s秒后重发</string>
+    <string name="reset_pwd_code_has_sand_to_mobile">验证码已发送至手机%s</string>
+    <string name="reset_pwd_resend_code">重新获取</string>
+    <string name="reset_pwd_pwd">密码：</string>
+    <string name="reset_pwd_hint_pwd">密码</string>
+    <string name="reset_pwd_confirm">完成</string>
+    <string name="reset_pwd_next">下一步</string>
+    <string name="reset_pwd_phone_title">手机号验证</string>
+    <string name="reset_pwd_email_title">邮箱验证</string>
+    <string name="reset_pwd_set_title">设置新密码</string>
+    <string name="reset_pwd_hint_email">输入验证码</string>
+    <string name="reset_pwd_hint_pwdset">输入新密码</string>
+    <string name="reset_pwd_hint_pwdconfirm">再次输入新密码</string>
+    <string name="reset_pwd_null">请输入手机号或邮箱地址</string>
+    <string name="reset_pwd_error">请输入正确格式的帐号</string>
+    <string name="reset_pwd_msg_success">密码重置成功</string>
+    <string name="reset_pwd_msg_success_for_email">邮箱验证消息已发送至您的邮箱，请打开邮箱查看并进密码重置</string>
+    <string name="reset_pwd_msg_two_password_is_different">请输入两个一致的6-20位的数字或字母密码</string>
+    <string name="reset_pwd_msg_code_is_null">请输入验证码</string>
+
+    <!-- 个人信息 -->
+    <string name="userinfo_title">个人信息</string>
+    <string name="userinfo_logout">退出登录</string>
+    <string name="userinfo_icon">头像</string>
+    <string name="userinfo_nickname">修改昵称</string>
+    <string name="userinfo_name">用户名</string>
+    <string name="userinfo_sex">性别</string>
+    <string name="userinfo_address">地址</string>
+    <string name="userinfo_security">账号安全</string>
+    <string name="userinfo_flyco_tip">飞科账号</string>
+    <string name="userinfo_outer_tip">绑定第三方账号</string>
+    <string name="userinfo_type_weixin">微信账号 </string>
+    <string name="userinfo_type_qq">QQ账号 </string>
+    <string name="userinfo_type_weibo">微博账号 </string>
+    <string name="userinfo_add">绑定</string>
+    <string name="userinfo_delete">解绑</string>
+    <string name="userinfo_msg_unbind_failure">解绑失败</string>
+    <string name="userinfo_unsettled">未设置</string>
+    <string name="userinfo_image_photo">拍照</string>
+    <string name="userinfo_image_gallery">从手机相册选择</string>
+    <string name="userinfo_image_cancel">取消</string>
+    <string name="userinfo_bind_username">飞科智能账号</string>
+    <string name="confirm">确认</string>
+    <string name="userinfo_msg_logout_confirm">确认退出登录吗</string>
+    <!-- 第三方账号绑定 -->
+    <string name="wx_uninstalled">微信未安装或者版本过低</string>
+    <string name="userinfo_bind_wx_message">您确定要绑定吗？绑定后您微信登录的用户数据将会全部合并后存入手机或邮箱注册的用户名下</string>
+    <string name="userinfo_bind_wb_message">您确定要绑定吗？绑定后您微博微博登录的用户数据将会全部合并后存入手机或邮箱注册的用户名下</string>
+    <string name="userinfo_bind_qq_message">您确定要绑定吗？绑定后您QQ登录的用户数据将会全部合并后存入手机或邮箱注册的用户名下</string>
+    <string name="userinfo_unbind_qq_message">您确定要解绑吗？解绑后您再用QQ登录将无法查看该账号的数据</string>
+    <string name="userinfo_unbind_wx_message">您确定要解绑吗？解绑后您再用微信登录将无法查看该账号的数据</string>
+    <string name="userinfo_unbind_wb_message">您确定要解绑吗？解绑后您再用微博微博登录将无法查看该账号的数据</string>
+    <string name="userinfo_bind_binded">用户已存在绑定</string>
+    <!-- auth -->
+    <string name="auth_title">飞科账号授权</string>
+    <string name="auth">授权</string>
+    <!-- 版本信息 -->
+    <string name="version_check_title">版本信息</string>
+    <string name="version_check_to_check_new">检查新版本</string>
+    <string name="version_check_current_version">当前版本：</string>
+    <!-- 系统设置 -->
+    <string name="setting_title">系统设置</string>
+    <string name="setting_remind">消息提醒</string>
+    <string name="setting_grade">给我们评分</string>
+    <string name="setting_agreement">飞科用户服务协议</string>
+    <string name="setting_declare">飞科公司   版权所有</string>
+    <string name="setting_declare_en">Copy 2011-2015 FLYCO.ALL Right Reserved</string>
+    <string name="setting_version_load">立即下载</string>
+    <string name="feedback_content_hints">您的意见是我们不断改进的动力</string>
+    <string name="feedback_email_hints">请输入手机号/邮箱以便我们回复您（选填）</string>
+    <string name="feedback_commit">提 交</string>
+    <string name="feedback_msg_input_is_null">请输入意见内容</string>
+    <string name="version_new_text">已经是最新版本</string>
+    <!-- 个人资料 -->
+    <string name="profile_title">个人资料</string>
+    <string name="profile_avatar">头像</string>
+    <string name="profile_nickname">昵称</string>
+    <string name="profile_sex">性别</string>
+    <string name="profile_birth">出生年月</string>
+    <string name="profile_city">所在城市</string>
+    <string name="profile_nickname_hint">请输入您的昵称</string>
+    <string name="profile_birth_cs">出生</string>
+    <string name="profile_birth_year">年</string>
+    <string name="profile_birth_month">月</string>
+    <string name="profile_no_modify">第三方帐号的头像和昵称无法修改</string>
+    <!-- 环境切换 -->
+    <string name="enviroment_change_title">环境切换</string>
+    <string name="enviroment_change_str">请选择您所需要的环境</string>
+    <string name="enviroment_formal_str">生产环境</string>
+    <string name="enviroment_test_str">测试环境</string>
+    <string name="enviroment_set_str">网络安全配置</string>
+    <string name="enviroment_https_str">启用https</string>
+    <string name="enviroment_version_formal">当前版本（正式环境）</string>
+    <string name="enviroment_version_test">当前版本（测试环境）</string>
+    <string name="enviroment_reset">更换环境配置信息，需要关闭并重启应用，点击“确定”将关闭并重启</string>
+    <!-- xListview -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_hint_ready">松开刷新数据</string>
+    <string name="xlistview_header_hint_loading">正在加载...</string>
+    <string name="xlistview_header_last_time"></string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <!-- OTA升级 -->
+
+
+    <!-- Descriptor parser -->
+    <string name="descriptor_notification_enabled">Notifications enabled</string>
+    <string name="descriptor_notification_disabled">Notifications disabled</string>
+    <string name="descriptor_indication_enabled">Indication enabled</string>
+    <string name="descriptor_indication_disabled">Indication disabled</string>
+    <string name="descriptor_reliablewrite_enabled">Reliable Write enabled</string>
+    <string name="descriptor_reliablewrite_disabled">Reliable Write disabled</string>
+    <string name="descriptor_writableauxillary_enabled">Writable Auxiliaries enabled</string>
+    <string name="descriptor_writableauxillary_disabled">Writable Auxiliaries disabled</string>
+    <string name="descriptor_broadcast_enabled">Broadcast enabled</string>
+    <string name="descriptor_broadcast_disabled">Broadcast disabled</string>
+    <string name="descriptor_bluetoothSIGAssignedNo">Bluetooth SIG Assigned Numbers</string>
+    <string name="descriptor_reservedforFutureUse">Reserved for future use</string>
+    <string name="descriptor_format">Format</string>
+    <string name="exponent">Exponent</string>
+    <string name="unit">Unit</string>
+    <string name="namespace">Namespace</string>
+    <string name="description">Description</string>
+
 </resources>

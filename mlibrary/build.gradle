@@ -29,7 +29,6 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'org.greenrobot:greendao-gradle-plugin:3.0.0'
     }
 }
 //C:\Users\XueYang\Desktop\QMProject\UtilsApp\mlibrary\src\main\java\com\hanling\mlibrary\greendaodemo

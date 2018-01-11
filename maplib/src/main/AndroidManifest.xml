@@ -22,7 +22,7 @@
         android:supportsRtl="true">
             <meta-data
                 android:name="com.amap.api.v2.apikey"
-                android:value="e647fa40f77e90e39da5a1b701770525"/>
+                android:value="e647fa40f77e90e39da5a1b701770525" />
 
         <activity android:name=".MapActivity"></activity>
             <service android:name="com.amap.api.location.APSService"></service>

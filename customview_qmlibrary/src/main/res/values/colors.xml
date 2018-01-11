@@ -1,0 +1,37 @@
+<resources>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="green">#00FF00</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
+    <color name="light_red">#AC4848</color>
+    <color name="orange">#FFA500</color>
+    <color name="transparent">#00000000</color>
+    <color name="half_transparent">#70000000</color>
+    <color name="transparent_tips_bg">#4C00132A</color>
+    <color name="blue_selector_btn_press">#26002948</color>
+    <color name="rippelColor">#0099CC</color>
+    <color name="circle_blue">#3ACAFF</color>
+    <color name="circle_yellow">#CFFF00</color>
+    <color name="circle_dark">#142340</color>
+    <color name="circle_purple">#c755ff</color>
+    <color name="status_bar_color">#043987</color>
+    <color name="black_text">#222222</color>
+    <color name="blue_text">#0087EE</color>
+    <color name="blue_bg">#3bcaff</color>
+    <color name="light_blue_button_background">#3ACAFF</color>
+    <color name="grey_background">#F2F2F2</color>
+    <color name="grey_line">#CCCCCC</color>
+    <color name="grey_text">#999999</color>
+    <color name="dark_grey_text">#666666</color>
+    <color name="grey_bg">#F4F4F4</color>
+    <color name="text_color_family">#888888</color>
+    <color name="grey_progress_background">#C9C9C9</color>
+    <color name="white_text_hint">#4CFFFFFF</color>
+    <color name="indoor_line_color">#baff00</color>
+    <color name="outdoor_line_color">#1c92ff</color>
+    <color name="text_color">#222222</color>
+    <color name="item_bg_pressed">#EEEEEE</color>
+    <color name="bg_blue_color">#3e9fd5</color>
+    <color name="yellow_line">#bdff0c</color>
+</resources>

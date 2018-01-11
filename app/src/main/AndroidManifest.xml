@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hanling.utilsapp">
+
     <application
         android:name=".UtilsApplication"
         android:allowBackup="true"
@@ -18,9 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MVPdemo.view.MVPLoginTestActivity"></activity>
+        <activity android:name=".MVPdemo.view.MVPLoginTestActivity" />
         <!-- VpnService服务 -->
 
+        <activity android:name=".BaseQMActivity"></activity>
+        <service android:name=".MyPushIntentService" />
     </application>
 
 </manifest>
