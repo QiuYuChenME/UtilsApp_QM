@@ -9,4 +9,5 @@
     <string name="nothing">无</string>
     <string name="btn_greendao">按钮二（GreenDao）</string>
     <string name="btn_retrofit">按钮三（Retrofit）</string>
+    <string name="btn_bluetooth">蓝牙</string>
 </resources>

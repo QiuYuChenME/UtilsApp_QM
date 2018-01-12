@@ -22,32 +22,30 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.facebook.stetho.Stetho;
-import com.google.gson.Gson;
+
 import com.hanling.mlibrary.LibMainActivity;
 import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
-import com.hanling.utilsapp.bean.TestBean;
+
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
 import com.orhanobut.logger.Logger;
 import com.qm.customview_qmlibrary.CustomviewActivity;
 import com.qm.maplib.MapActivity;
 import com.qm.ndklib.NDKActivity;
 import com.qm.sanforvpnconnlib.SanforConnActivity;
+import com.qyc.bluetoothlibrary.BlueToothActivity;
 import com.sangfor.ssl.IVpnDelegate;
 import com.sangfor.ssl.SangforAuth;
 import com.umeng.message.PushAgent;
-import com.umeng.message.UmengNotificationClickHandler;
-import com.umeng.message.entity.UMessage;
 
 
-import org.json.JSONObject;
+
 
 import java.io.IOException;
 import java.util.Random;
@@ -57,12 +55,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+import static android.support.v4.content.PermissionChecker.PERMISSION_GRANTED;
+
 public class UtilsActivity extends BaseQMActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private PushAgent pushAgentInstance;
     private static final String TAG = "UtilsActivity";
     @BindView(R.id.btn_utils)
     Button btn_utils;
+    @BindView(R.id.btn_bluetoothlib)
+    Button btn_bluetoothlib;
     private String[] permisson_group = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -79,9 +81,15 @@ public class UtilsActivity extends BaseQMActivity
         /**
          * 请求权限
          */
-        ActivityCompat.requestPermissions(UtilsActivity.this,
-                new String[]{Manifest.permission.READ_CONTACTS},
-                1);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(UtilsActivity.this,
+                        new String[]{Manifest.permission.READ_CONTACTS},
+                        1);
+                Logger.d("动态请求READ_CONTACTS权限");
+            }
+
+        }
 
         /**
          * 初始化UI控件
@@ -223,9 +231,19 @@ public class UtilsActivity extends BaseQMActivity
      *
      * @param button
      */
-    @OnClick(R.id.btn_utils)
+    @OnClick({R.id.btn_utils, R.id.btn_bluetoothlib})
     public void A(Button button) {
-        Toast.makeText(this, "被点击了" + button.getText(), Toast.LENGTH_SHORT).show();
+
+        switch (button.getId()) {
+            case R.id.btn_utils:
+                Toast.makeText(this, "被点击了" + button.getText(), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.btn_bluetoothlib:
+                Intent intent = new Intent(UtilsActivity.this, BlueToothActivity.class);
+                startActivity(intent);
+                break;
+        }
+
 
     }
 
