@@ -1,9 +1,10 @@
-package com.qm.customview_qmlibrary;
+package com.qm.customview_qmlibrary.dials;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.graphics.Path;
 
 import android.graphics.Rect;
@@ -55,6 +56,7 @@ public class Dials extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+        canvas.setDrawFilter(new PaintFlagsDrawFilter(0, Paint.ANTI_ALIAS_FLAG | Paint.FILTER_BITMAP_FLAG));
 
         Paint forePaint = new Paint();
         int mWidth = getWidth();
@@ -113,6 +115,8 @@ public class Dials extends View {
         paint_line.setColor(Color.WHITE);
         paint_line.setStyle(Paint.Style.STROKE);
         Paint paint_word = new Paint();
+        paint_word.setAntiAlias(true);
+        paint_word.setDither(true);
         paint_word.setLinearText(true);
         paint_word.setTextSize(dip2px(getContext(), 11));
         paint_word.setColor(Color.WHITE);
@@ -134,16 +138,34 @@ public class Dials extends View {
 //        paint_word.getTextBounds(String.valueOf(30), 0, String.valueOf(30).length(), mBound);
 //        canvas.drawText(String.valueOf(90), 0, String.valueOf(90).length(), getWidth() / 2 - radius + dip2px(getContext(), 4 + 8 + 4 + 4), getHeight() / 2 + mBound.height() / 2, paint_word);
         //刻度文字绘制
+//        for (int i = -3; i < 4; i++) {
+//
+//            canvas.save();
+//            canvas.rotate(i * 40, getWidth() / 2, getHeight() / 2);
+//            Rect mBound = new Rect();
+//            paint_word.getTextBounds(String.valueOf(30), 0, String.valueOf(30).length(), mBound);
+//            canvas.drawText(String.valueOf(60 + i * 10), 0, String.valueOf(90).length(), getWidth() / 2 - mBound.width() / 2, getHeight() / 2 - radius + dip2px(getContext(), 4 + 8 + 4 + 4) + mBound.height(), paint_word);
+//            canvas.restore();
+//        }
+
+        //刻度文字绘制 多次旋转坐标系
         for (int i = -3; i < 4; i++) {
 
-            canvas.save();
-            canvas.rotate(i * 40, getWidth() / 2, getHeight() / 2);
-            Rect mBound = new Rect();
-            paint_word.getTextBounds(String.valueOf(30), 0, String.valueOf(30).length(), mBound);
-            canvas.drawText(String.valueOf(60 + i * 10), 0, String.valueOf(90).length(), getWidth() / 2 - mBound.width() / 2, getHeight() / 2 - radius + dip2px(getContext(), 4 + 8 + 4 + 4) + mBound.height(), paint_word);
-            canvas.restore();
+            drawNum(canvas, i * 40, 60 + i * 10 + "", paint_word, radius);
         }
 
+    }
+
+    private void drawNum(Canvas canvas, int degree, String text, Paint paint, int radius) {
+        Rect textBound = new Rect();
+        paint.getTextBounds(text, 0, text.length(), textBound);
+        canvas.rotate(degree);
+        canvas.translate(0, -radius + dip2px(getContext(), 4 + 8 + 4 + 4) + textBound.height());//这里的50是坐标中心距离时钟最外边框的距离，当然你可以根据需要适当调节
+        canvas.rotate(-degree);
+        canvas.drawText(text, getWidth() / 2 - textBound.width() / 2, getHeight() / 2 + textBound.height() / 2, paint);
+        canvas.rotate(degree);
+        canvas.translate(0, radius - dip2px(getContext(), 4 + 8 + 4 + 4) - textBound.height());
+        canvas.rotate(-degree);
     }
 
     @Override
@@ -188,6 +210,8 @@ public class Dials extends View {
     public void setCenterText(Canvas canvas) {
         Rect mBound = new Rect();
         TextPaint tp = new TextPaint();
+        tp.setAntiAlias(true);
+        tp.setDither(true);
         tp.setColor(Color.WHITE);
         tp.setTextSize(dip2px(getContext(), 60));
         Log.e(TAG, "setCenterText: " + text_num + "---" + d_width / (dip2px(getContext(), 10)));

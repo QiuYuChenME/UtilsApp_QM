@@ -1,26 +1,24 @@
 package com.qm.customview_qmlibrary;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
-import static android.R.attr.width;
+import com.qm.customview_qmlibrary.dials.DialsActivity;
+import com.qm.customview_qmlibrary.gitwave.WaveLibActivity;
 
 public class CustomviewActivity extends AppCompatActivity {
     private AutoCompleteTextView autotv_customlib;
     private ArrayAdapter<String> arrayAdapter;
     private FrameLayout rootView;
     private DoubleWaveView waveView;
-    private Button btn_dials, btn_topbar, btn_wave, btn_bob;
+    private Button btn_dials, btn_topbar, btn_wave, btn_bob, btn_wavelib;
     private DoubleWaveView doubleWaveView;
 
     @Override
@@ -83,6 +81,12 @@ public class CustomviewActivity extends AppCompatActivity {
                 startActivity(new Intent(CustomviewActivity.this, BobActivity.class));
             }
         });
+        btn_wavelib.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CustomviewActivity.this, WaveLibActivity.class));
+            }
+        });
     }
 
     private void initView() {
@@ -90,6 +94,7 @@ public class CustomviewActivity extends AppCompatActivity {
         btn_dials = (Button) findViewById(R.id.btn_dials);
         btn_wave = (Button) findViewById(R.id.btn_wave);
         btn_topbar = (Button) findViewById(R.id.btn_topbar);
+        btn_wavelib = (Button) findViewById(R.id.btn_wavelib);
         doubleWaveView = (DoubleWaveView) findViewById(R.id.doublewave);
         doubleWaveView.startAnimation();
     }

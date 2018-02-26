@@ -7,8 +7,11 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -30,9 +33,11 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
+import com.google.gson.Gson;
 import com.hanling.mlibrary.LibMainActivity;
 import com.hanling.utilsapp.MVPdemo.view.MVPLoginTestActivity;
 
+import com.hanling.utilsapp.bean.ResultBean;
 import com.hanling.xfvoicelibrary.XFLibVoiceActivity;
 import com.orhanobut.logger.Logger;
 import com.qm.customview_qmlibrary.CustomviewActivity;
@@ -45,8 +50,6 @@ import com.sangfor.ssl.SangforAuth;
 import com.umeng.message.PushAgent;
 
 
-
-
 import java.io.IOException;
 import java.util.Random;
 
@@ -57,14 +60,18 @@ import butterknife.OnClick;
 
 import static android.support.v4.content.PermissionChecker.PERMISSION_GRANTED;
 
+
 public class UtilsActivity extends BaseQMActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private PushAgent pushAgentInstance;
+    private Context context;
     private static final String TAG = "UtilsActivity";
     @BindView(R.id.btn_utils)
     Button btn_utils;
     @BindView(R.id.btn_bluetoothlib)
     Button btn_bluetoothlib;
+    @BindView((R.id.btn_network))
+    Button btn_network;
     private String[] permisson_group = {Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -78,9 +85,71 @@ public class UtilsActivity extends BaseQMActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_utils);
         ButterKnife.bind(this);
-        /**
-         * 请求权限
-         */
+        context = this;
+
+        //初始化UI控件
+        initView();
+        //线程中ping 网址 测试网络是否正常
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                final boolean b = pingIpAddress("10.14.10.24");
+                Log.e(TAG, "run: " + b);
+            }
+        }).start();
+
+        // 手动获取device token
+        pushAgentInstance = getPushAgentInstance();
+        String registrationId = pushAgentInstance.getRegistrationId();
+        Logger.d(TAG + "device_token:" + registrationId);
+//       基础弹窗
+//       showMyDialog()
+//       动态申请权限
+//       getPermission()
+    }
+
+    /**
+     * 弹框
+     */
+    private void showMyDialog() {
+        //    通过AlertDialog.Builder这个类来实例化我们的一个AlertDialog的对象
+        AlertDialog.Builder builder = new AlertDialog.Builder(UtilsActivity.this);
+        //    设置Title的图标
+
+        //    设置Title的内容
+        builder.setTitle("弹出警告框");
+        //    设置Content来显示一个信息
+        builder.setMessage("确定删除吗？");
+        //    设置一个PositiveButton
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(UtilsActivity.this, "positive: " + which, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //    设置一个NegativeButton
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(UtilsActivity.this, "negative: " + which, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //    设置一个NeutralButton
+        builder.setNeutralButton("忽略", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(UtilsActivity.this, "neutral: " + which, Toast.LENGTH_SHORT).show();
+            }
+        });
+        //    显示出该对话框
+        builder.show();
+    }
+
+    /**
+     * 动态监测权限并申请 （略：申请回调）
+     */
+    private void getPermission() {
+        //请求权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(UtilsActivity.this,
@@ -90,41 +159,6 @@ public class UtilsActivity extends BaseQMActivity
             }
 
         }
-
-        /**
-         * 初始化UI控件
-         */
-        initView();
-        /**
-         *  //线程中ping 网址 测试网络是否正常
-         */
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final boolean b = pingIpAddress("10.14.10.24");
-                Log.e(TAG, "run: " + b);
-            }
-        }).start();
-
-        /**
-         *  手动获取device token
-         */
-        pushAgentInstance = getPushAgentInstance();
-        String registrationId = pushAgentInstance.getRegistrationId();
-        Logger.d(TAG + "device_token:" + registrationId);
-
-        int id = new Random(System.nanoTime()).nextInt();
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.cancelAll();
-        Notification.Builder mBuilder = new Notification.Builder(this);
-        mBuilder.setContentTitle("111111111")
-                .setContentText("111111111")
-                .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.icon_fsas)
-                .setAutoCancel(true);
-        Notification notification = mBuilder.getNotification();
-        manager.notify(id, notification);
-
     }
 
     private void initView() {
@@ -231,7 +265,7 @@ public class UtilsActivity extends BaseQMActivity
      *
      * @param button
      */
-    @OnClick({R.id.btn_utils, R.id.btn_bluetoothlib})
+    @OnClick({R.id.btn_utils, R.id.btn_bluetoothlib, R.id.btn_network})
     public void A(Button button) {
 
         switch (button.getId()) {
@@ -241,6 +275,9 @@ public class UtilsActivity extends BaseQMActivity
             case R.id.btn_bluetoothlib:
                 Intent intent = new Intent(UtilsActivity.this, BlueToothActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.btn_network:
+                Toast.makeText(context, getNetStatus() + "", Toast.LENGTH_SHORT).show();
                 break;
         }
 
@@ -268,4 +305,54 @@ public class UtilsActivity extends BaseQMActivity
         return false;
     }
 
+    /**
+     * 弹出notifycation
+     */
+    public void showNotifycation() {
+
+        int id = new Random(System.nanoTime()).nextInt();
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.cancelAll();
+        Notification.Builder mBuilder = new Notification.Builder(this);
+        mBuilder.setContentTitle("111111111")
+                .setContentText("111111111")
+                .setWhen(System.currentTimeMillis())
+                .setSmallIcon(R.drawable.icon_fsas)
+                .setAutoCancel(true);
+        Notification notification = mBuilder.getNotification();
+        manager.notify(id, notification);
+    }
+
+    /**
+     *
+     */
+    public void showGson() {
+        Gson gson = new Gson();
+        ResultBean resultBean = gson.fromJson("{\n" +
+                "    \"msg\": {\n" +
+                "        \"username\": [\n" +
+                "            \"该字段是必填项。\"\n" +
+                "        ],\n" +
+                "        \"password\": [\n" +
+                "            \"该字段是必填项。\"\n" +
+                "        ]\n" +
+                "    },\n" +
+                "    \"code\": 4,\n" +
+                "    \"resultObj\": []\n" +
+                "}", ResultBean.class);
+        Log.e(TAG, "onCreate: " + resultBean.getMsg());
+        int i = (0x2) >> 1;
+        Log.e(TAG, "useAppContext: " + i);
+    }
+
+    /**
+     * 判读当前网络状态
+     */
+    public boolean getNetStatus() {
+        boolean flag;
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = cm.getActiveNetworkInfo();
+        flag = activeNetworkInfo != null && activeNetworkInfo.isAvailable();
+        return flag;
+    }
 }

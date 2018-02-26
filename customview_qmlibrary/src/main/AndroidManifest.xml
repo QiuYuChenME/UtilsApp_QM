@@ -8,9 +8,10 @@
         android:supportsRtl="true">
         <activity android:name=".CustomviewActivity" />
         <activity android:name=".FlycoHumidifierControlActivity" />
-        <activity android:name=".DialsActivity" />
+        <activity android:name=".dials.DialsActivity" />
         <activity android:name=".WaveActivity" />
-        <activity android:name=".BobActivity"></activity>
+        <activity android:name=".BobActivity" />
+        <activity android:name=".gitwave.WaveLibActivity"></activity>
     </application>
 
 </manifest>

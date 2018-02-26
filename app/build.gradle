@@ -11,6 +11,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
     buildTypes {
         release {
@@ -45,7 +46,6 @@ dependencies {
     compile project(':customview_qmlibrary')
     compile project(path: ':maplib')
     compile project(':sanforvpnconnlib')
-    compile project(':ndklib')
     compile project(':Pushlib')
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.1.0'
@@ -58,4 +58,6 @@ dependencies {
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.4-beta2'
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2'
     compile project(':bluetoothlibrary')
+    compile project(':ndklib')
+    compile files('libs/xUtils-2.6.14.jar')
 }

@@ -9,7 +9,7 @@
     android:orientation="vertical"
     tools:context="com.qm.customview_qmlibrary.CustomviewActivity">
 
-    <com.qm.customview_qmlibrary.Dials
+    <com.qm.customview_qmlibrary.dials.Dials
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal" />

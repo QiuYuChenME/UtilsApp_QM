@@ -5,9 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="com.qm.customview_qmlibrary.DialsActivity">
+    tools:context="com.qm.customview_qmlibrary.dials.DialsActivity">
 
-    <com.qm.customview_qmlibrary.Dials
+    <com.qm.customview_qmlibrary.dials.Dials
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
